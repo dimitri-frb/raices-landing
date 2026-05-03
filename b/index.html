@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RAÍCES by SADALA — Coliving asequible para jóvenes profesionales malagueños. Tu primer hogar en Málaga." />
+<meta name="theme-color" content="#b54a25" />
+<title>RAÍCES by SADALA — Para los de aquí.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f7f3ea'/%3E%3Cpath d='M32 14 a18 18 0 0 1 18 18 v18 h-36 v-18 a18 18 0 0 1 18 -18z' fill='none' stroke='%23b54a25' stroke-width='2.5'/%3E%3C/svg%3E" />
+
+<style>
+:root {
+  --bone: #f7f3ea;
+  --bone-warm: #ede5d3;
+  --bone-shadow: #d8cdb5;
+  --charcoal: #1f1812;
+  --ink: #3a302a;
+  --muted: #8a7d6e;
+  --muted-soft: #b4a896;
+  --accent: #b54a25;
+  --accent-deep: #8e3a1c;
+  --accent-soft: #d97a52;
+  --hairline: rgba(31, 24, 18, 0.1);
+  --hairline-strong: rgba(31, 24, 18, 0.2);
+  --shadow-soft: 0 30px 60px -20px rgba(31, 24, 18, 0.18);
+  --container: 1240px;
+  --section-y: clamp(110px, 14vw, 180px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+h1 { font-size: clamp(3.4rem, 11vw, 8rem); font-weight: 300; }
+h2 { font-size: clamp(2.5rem, 6vw, 4.4rem); font-weight: 300; margin-bottom: 1.2rem; }
+h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 400; }
+
+.italic { font-style: italic; font-weight: 300; }
+
+.mono {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+p { color: var(--ink); }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 60px);
+}
+
+section { padding: var(--section-y) 0; position: relative; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 2rem;
+  background: var(--charcoal);
+  color: var(--bone);
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--charcoal);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  border-radius: 0;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bone); }
+.btn .arrow { transition: transform 0.25s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1px solid var(--charcoal);
+}
+.btn-ghost:hover { background: var(--charcoal); color: var(--bone); }
+
+/* ================== NAV ================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.4rem 0;
+  transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(247, 243, 234, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.85rem 0;
+  border-bottom-color: var(--hairline);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--charcoal);
+  letter-spacing: -0.01em;
+  display: flex; align-items: baseline; gap: 0.6rem;
+}
+.logo .by {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  font-weight: 500;
+}
+.nav-right { display: flex; gap: 1.5rem; align-items: center; }
+.nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+.nav-back:hover { color: var(--charcoal); }
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.65rem 1.2rem;
+  border: 1px solid var(--charcoal);
+  color: var(--charcoal);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.nav-cta:hover { background: var(--charcoal); color: var(--bone); }
+
+/* ================== HERO ================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bone);
+  text-align: center;
+}
+
+.hero-arch {
+  width: clamp(180px, 22vw, 260px);
+  margin: 0 auto 3.5rem;
+  position: relative;
+}
+.hero-arch svg { width: 100%; height: auto; display: block; }
+.hero-arch .sun {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -45%);
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--accent-soft), var(--accent));
+  box-shadow: 0 0 60px rgba(181, 74, 37, 0.25);
+}
+
+.hero-mono { margin-bottom: 2rem; color: var(--accent); }
+
+.hero h1 {
+  font-style: italic;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.hero h1 .accent {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  line-height: 1.5;
+}
+
+.hero-cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+.hero-meta {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.6rem; }
+.hero-meta strong { color: var(--charcoal); font-weight: 500; }
+
+.hero-arches-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+.hero-arches-bg svg { opacity: 0.08; }
+
+/* ================== SECTION HEAD ================== */
+.section-head {
+  max-width: 820px;
+  margin: 0 auto clamp(60px, 8vw, 100px);
+  text-align: center;
+}
+.section-head .mono { display: block; margin-bottom: 1.5rem; color: var(--accent); }
+.section-head h2 { font-style: italic; }
+.section-head p {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================== PROBLEMA ================== */
+.problema { background: var(--bone); }
+.problema-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.problem-col {
+  padding: 0 clamp(20px, 3vw, 40px);
+  text-align: center;
+  border-right: 1px solid var(--hairline);
+}
+.problem-col:last-child { border-right: none; }
+@media (max-width: 800px) {
+  .problema-grid { grid-template-columns: 1fr; }
+  .problem-col { border-right: none; border-bottom: 1px solid var(--hairline); padding: 3rem 0; }
+  .problem-col:last-child { border-bottom: none; }
+}
+.problem-col .mono { color: var(--accent); margin-bottom: 1.5rem; }
+.problem-col .stat {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--charcoal);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.problem-col .stat .unit {
+  font-size: 0.34em;
+  font-style: normal;
+  color: var(--muted);
+  display: block;
+  margin-top: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 500;
+}
+.problem-col h3 {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--charcoal);
+  font-weight: 400;
+}
+.problem-col p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ================== SOLUCIÓN ================== */
+.solucion { background: var(--bone-warm); }
+.solucion-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: start;
+}
+@media (max-width: 900px) { .solucion-grid { grid-template-columns: 1fr; } }
+.solucion-text h2 { font-style: italic; margin-bottom: 1.5rem; }
+.solucion-text > .mono { color: var(--accent); display: block; margin-bottom: 1.5rem; }
+.solucion-text > p {
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 540px;
+}
+.features-list {
+  display: flex;
+  flex-direction: column;
+}
+.feature-item {
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--hairline-strong);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+.feature-item:last-child { border-bottom: 1px solid var(--hairline-strong); }
+.feature-item .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--accent);
+  line-height: 1;
+  padding-top: 0.2rem;
+}
+.feature-item h4 {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--charcoal);
+  margin-bottom: 0.4rem;
+}
+.feature-item p {
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.price-arch {
+  position: sticky;
+  top: 100px;
+  background: var(--bone);
+  padding: 3rem 2.5rem 2.5rem;
+  border: 1px solid var(--hairline);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.price-arch::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  aspect-ratio: 1.2 / 1;
+  border: 1px solid var(--accent);
+  border-bottom: none;
+  border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+  pointer-events: none;
+}
+.price-arch .mono { color: var(--accent); margin-bottom: 1rem; }
+.price-arch .price-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(4rem, 9vw, 6rem);
+  color: var(--charcoal);
+  line-height: 1;
+  margin: 1.5rem 0 0.6rem;
+}
+.price-arch .price-num .from {
+  font-size: 0.32em;
+  font-style: normal;
+  color: var(--muted);
+  vertical-align: super;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-right: 0.4em;
+}
+.price-arch .price-num .per {
+  font-size: 0.22em;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-left: 0.3em;
+}
+.price-arch .desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 1rem auto 2rem;
+  max-width: 280px;
+  line-height: 1.6;
+}
+.price-arch ul {
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+.price-arch ul li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.price-arch ul li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ================== PERSONAS ================== */
+.personas { background: var(--bone); }
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 3rem);
+}
+@media (max-width: 900px) { .personas-grid { grid-template-columns: 1fr; gap: 4rem; } }
+
+.persona {
+  text-align: center;
+}
+.persona-arch {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto 2rem;
+  aspect-ratio: 0.8 / 1;
+  background: var(--bone-warm);
+  border: 1px solid var(--hairline);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.persona:hover .persona-arch { background: var(--accent); border-color: var(--accent); }
+.persona:hover .persona-arch .monogram { color: var(--bone); }
+.persona-arch .monogram {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(4rem, 7vw, 5.5rem);
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+.persona .mono { color: var(--accent); margin-bottom: 0.5rem; }
+.persona-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--charcoal);
+  margin-bottom: 0.3rem;
+}
+.persona-role {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 1.2rem;
+}
+.persona-quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.55;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.persona-quote::before { content: '“'; color: var(--accent); font-size: 1.4em; line-height: 0; vertical-align: -0.2em; margin-right: 0.1em; }
+.persona-quote::after { content: '”'; color: var(--accent); font-size: 1.4em; line-height: 0; vertical-align: -0.2em; margin-left: 0.05em; }
+
+/* ================== DIFERENCIADORES ================== */
+.diferenciadores { background: var(--bone-warm); }
+.compare {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.compare-head {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr 1.1fr;
+  padding: 1.5rem 1.5rem;
+  border-bottom: 2px solid var(--charcoal);
+  align-items: end;
+  gap: 1rem;
+}
+.compare-head .mono { font-size: 0.7rem; color: var(--muted); }
+.compare-head .col-title {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--charcoal);
+}
+.compare-head .col-title.raices { color: var(--accent); }
+.compare-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr 1.1fr;
+  padding: 1.4rem 1.5rem;
+  border-bottom: 1px solid var(--hairline);
+  gap: 1rem;
+  align-items: start;
+  transition: background 0.25s ease;
+}
+.compare-row:hover { background: rgba(181, 74, 37, 0.04); }
+.compare-row .mono { color: var(--charcoal); font-weight: 500; padding-top: 0.2rem; }
+.compare-row .market { color: var(--muted); font-size: 0.96rem; line-height: 1.5; }
+.compare-row .raices {
+  color: var(--charcoal);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  font-weight: 400;
+  position: relative;
+}
+.compare-row .raices::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 0.5em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@media (max-width: 700px) {
+  .compare-head, .compare-row { grid-template-columns: 1fr; gap: 0.6rem; }
+  .compare-head .mono { display: none; }
+  .compare-row .mono { font-size: 0.7rem; }
+  .compare-row .raices::before { display: none; }
+  .compare-row .raices { padding-left: 0; padding-top: 0.4rem; border-top: 1px dashed var(--accent); }
+  .compare-row .raices::after { content: 'RAÍCES'; display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; color: var(--accent); margin-bottom: 0.3rem; }
+}
+
+/* ================== EDIFICIO ================== */
+.edificio { background: var(--bone); }
+.edificio-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+}
+@media (max-width: 900px) { .edificio-inner { grid-template-columns: 1fr; } }
+
+.edificio-info .mono { color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.edificio-info h2 { font-style: italic; margin-bottom: 1.5rem; }
+.edificio-info > p { color: var(--muted); font-size: 1.05rem; max-width: 460px; margin-bottom: 2.5rem; line-height: 1.7; }
+
+.edificio-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+.fact {
+  background: var(--bone);
+  padding: 1.6rem 1.4rem;
+}
+.fact .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2.4rem;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.fact .desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.map-arch {
+  position: relative;
+  aspect-ratio: 0.78 / 1;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.map-arch-frame {
+  position: absolute;
+  inset: 0;
+  background: var(--bone-warm);
+  border: 1px solid var(--charcoal);
+  border-radius: 50% 50% 0 0 / 28% 28% 0 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+.map-arch-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #ede5d3 0%, #d8cdb5 100%);
+}
+.map-arch-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(31, 24, 18, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 24, 18, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.map-arch-bg::after {
+  content: '';
+  position: absolute;
+  width: 90%; height: 5px;
+  background: var(--accent);
+  top: 60%; left: -5%;
+  transform: rotate(-10deg);
+  opacity: 0.4;
+}
+.map-pin {
+  position: absolute;
+  top: 48%; left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+}
+.map-pin .pin-circle {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 4px solid var(--bone);
+  box-shadow: 0 4px 14px rgba(31, 24, 18, 0.3);
+  position: relative;
+}
+.map-pin .pin-pulse {
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.4;
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.map-arch-caption {
+  position: absolute;
+  bottom: 1.6rem; left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+.map-arch-caption .place {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--charcoal);
+  display: block;
+}
+.map-arch-caption .city {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ================== CONTACTO ================== */
+.contacto { background: var(--bone-warm); }
+.contacto-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contacto-inner > .mono { color: var(--accent); margin-bottom: 1.5rem; display: block; }
+.contacto-inner h2 { font-style: italic; margin-bottom: 1.2rem; }
+.contacto-inner > p { color: var(--muted); font-size: 1.05rem; margin-bottom: 3.5rem; line-height: 1.7; }
+
+.form { text-align: left; }
+.form-group { margin-bottom: 1.8rem; }
+.form-group label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.7rem 0;
+  border: none;
+  border-bottom: 1px solid var(--charcoal);
+  background: transparent;
+  color: var(--charcoal);
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.3rem;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+}
+.form-group input::placeholder, .form-group select { color: var(--muted-soft); }
+.form-group input:focus, .form-group select:focus { outline: none; border-bottom-color: var(--accent); }
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4 L6 8 L10 4' stroke='%231f1812' stroke-width='1.2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 2rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+.form-submit { width: 100%; justify-content: center; margin-top: 2rem; padding: 1.2rem; }
+.form-disclaimer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem 0;
+}
+.form-success.show { display: block; animation: fadeIn 0.6s ease; }
+.form-success-arch {
+  width: 80px; height: 80px;
+  margin: 0 auto 2rem;
+  border: 2px solid var(--accent);
+  border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  background: var(--bone);
+}
+.form-success-arch svg { color: var(--accent); }
+.form-success h3 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 2rem; color: var(--charcoal); margin-bottom: 0.6rem; }
+.form-success p { color: var(--muted); }
+
+/* ================== FOOTER ================== */
+.footer {
+  background: var(--bone);
+  padding: 5rem 0 3rem;
+  border-top: 1px solid var(--hairline);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.footer .logo { margin-bottom: 1rem; }
+.footer-tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+.footer-brand p { color: var(--muted); font-size: 0.95rem; max-width: 340px; line-height: 1.6; }
+.footer-col h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--charcoal);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--hairline);
+  padding-top: 2rem;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ================== ANIMATIONS ================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.delay-1 { transition-delay: 0.08s; }
+.reveal.delay-2 { transition-delay: 0.16s; }
+.reveal.delay-3 { transition-delay: 0.24s; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+::selection { background: var(--accent); color: var(--bone); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">
+      Raíces <span class="by">por Sadala</span>
+    </a>
+    <div class="nav-right">
+      <a href="../" class="nav-back">← Opciones</a>
+      <a href="#contacto" class="nav-cta">Lista de espera</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-arch">
+      <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10 280 L10 100 Q10 10 100 10 Q190 10 190 100 L190 280" fill="none" stroke="#1f1812" stroke-width="1.2" opacity="0.9"/>
+        <path d="M22 280 L22 100 Q22 22 100 22 Q178 22 178 100 L178 280" fill="none" stroke="#b54a25" stroke-width="0.6" opacity="0.5"/>
+      </svg>
+      <div class="sun"></div>
+    </div>
+
+    <div class="hero-mono mono">Coliving asequible · Málaga · Próxima apertura</div>
+
+    <h1>Para los <span class="accent italic">de aquí.</span></h1>
+    <p class="hero-sub">Tu primer hogar en Málaga. Una habitación propia, zonas comunes con alma y todo incluido.</p>
+
+    <div class="hero-cta-row">
+      <a href="#contacto" class="btn">
+        Quiero saber más
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12 L19 12 M13 6 L19 12 L13 18"/></svg>
+      </a>
+      <a href="#solucion" class="btn btn-ghost">Cómo funciona</a>
+    </div>
+
+    <div class="hero-meta">
+      <span><strong>600€</strong> / mes desde</span>
+      <span><strong>La Trinidad</strong> · Málaga</span>
+      <span>Apertura <strong>2026</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PROBLEMA ===== -->
+<section class="problema" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono">Cap. 01 — El problema</span>
+      <h2>Málaga está perdiendo a su gente.</h2>
+      <p>El mercado del alquiler ha cambiado. Quienes nacieron y se formaron aquí ya no pueden permitirse vivir donde crecieron.</p>
+    </div>
+
+    <div class="problema-grid">
+      <div class="problem-col reveal delay-1">
+        <span class="mono">El stock</span>
+        <div class="stat">12.000<span class="unit">pisos turísticos</span></div>
+        <h3>El centro vive de paso.</h3>
+        <p>Calles enteras del casco antiguo y barrios consolidados son ya alojamientos para turistas, no para vecinos.</p>
+      </div>
+      <div class="problem-col reveal delay-2">
+        <span class="mono">El precio</span>
+        <div class="stat">€900<span class="unit">a 1.100 / mes</span></div>
+        <h3>Un piso pequeño y pelado.</h3>
+        <p>Un estudio en una zona céntrica supera ya el sueldo neto de muchos jóvenes profesionales. Y eso sin suministros.</p>
+      </div>
+      <div class="problem-col reveal delay-3">
+        <span class="mono">La consecuencia</span>
+        <div class="stat italic">Se van<span class="unit">de su ciudad</span></div>
+        <h3>Pierden raíces.</h3>
+        <p>Enfermeras, profesores e ingenieros se mudan a la periferia o a otras provincias. El tejido local se vacía.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUCIÓN ===== -->
+<section class="solucion" id="solucion">
+  <div class="container">
+    <div class="solucion-grid">
+      <div class="solucion-text reveal">
+        <span class="mono">Cap. 02 — La solución</span>
+        <h2>Un hogar adulto, asequible y con comunidad.</h2>
+        <p>RAÍCES no es una residencia de estudiantes ni un hostal. Es un espacio diseñado para profesionales jóvenes que quieren vivir bien sin renunciar a ahorrar y sin firmar un contrato que les ate.</p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="num">01</div>
+            <div>
+              <h4>Habitación privada con baño.</h4>
+              <p>Cama de matrimonio, escritorio, almacenamiento, baño en suite. Sin compartir con desconocidos.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="num">02</div>
+            <div>
+              <h4>Zonas comunes con alma.</h4>
+              <p>Cocina equipada, salón de lectura, sala de coworking, terraza. Diseñadas para usarlas, no para la foto.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="num">03</div>
+            <div>
+              <h4>Gestión profesional.</h4>
+              <p>Limpieza semanal de zonas comunes, mantenimiento 24h, app de incidencias. Vives, nos ocupamos.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="num">04</div>
+            <div>
+              <h4>Una sola cuota.</h4>
+              <p>Luz, agua, gas, internet de fibra, limpieza y mantenimiento. Sin sorpresas a fin de mes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal delay-2">
+        <div class="price-arch">
+          <span class="mono">Cuota mensual</span>
+          <div class="price-num"><span class="from">desde</span>600€<span class="per">/ mes</span></div>
+          <p class="desc">Habitación privada con baño y todo incluido. Sin sorpresas.</p>
+          <ul>
+            <li>Sin avalistas</li>
+            <li>Contratos desde 6 meses</li>
+            <li>Fianza única razonable</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PERSONAS ===== -->
+<section class="personas" id="para-quien">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono">Cap. 03 — Para quién</span>
+      <h2>Pensado para quienes hacen Málaga.</h2>
+      <p>Profesionales jóvenes con un trabajo estable, que necesitan vivir cerca y bien sin gastar la mitad de su sueldo en alquiler.</p>
+    </div>
+
+    <div class="personas-grid">
+      <article class="persona reveal">
+        <div class="persona-arch"><span class="monogram">L</span></div>
+        <span class="mono">Sanidad</span>
+        <h3 class="persona-name">Lucía, 28</h3>
+        <p class="persona-role">Enfermera · Hospital Regional</p>
+        <p class="persona-quote">Hago turnos de noche y vuelvo a un piso compartido con tres desconocidos. Quiero tranquilidad, mi propio baño, y poder ahorrar.</p>
+      </article>
+
+      <article class="persona reveal delay-1">
+        <div class="persona-arch"><span class="monogram">M</span></div>
+        <span class="mono">Tecnología</span>
+        <h3 class="persona-name">Marcos, 31</h3>
+        <p class="persona-role">Ingeniero · Parque Tecnológico</p>
+        <p class="persona-quote">Trabajo en el PTA. Pagar 1.000€ por un estudio para acabar comiendo solo no tiene sentido. Quiero un sitio adulto.</p>
+      </article>
+
+      <article class="persona reveal delay-2">
+        <div class="persona-arch"><span class="monogram">C</span></div>
+        <span class="mono">Educación</span>
+        <h3 class="persona-name">Carmen, 26</h3>
+        <p class="persona-role">Profesora · Instituto público</p>
+        <p class="persona-quote">Soy de Málaga. No quiero irme a Antequera para poder pagar el alquiler. Solo quiero un piso digno, sin peleas con caseros.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIADORES ===== -->
+<section class="diferenciadores" id="diferenciadores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="mono">Cap. 04 — Diferenciadores</span>
+      <h2>No somos un piso compartido más.</h2>
+      <p>Una alternativa real al mercado actual. Comparemos sin adornos.</p>
+    </div>
+
+    <div class="compare reveal delay-1">
+      <div class="compare-head">
+        <span class="mono">Concepto</span>
+        <span class="col-title">Mercado actual</span>
+        <span class="col-title raices">RAÍCES</span>
+      </div>
+      <div class="compare-row">
+        <span class="mono">Precio</span>
+        <span class="market">900–1.100€ por estudio + suministros aparte</span>
+        <span class="raices">Desde 600€/mes, todo incluido</span>
+      </div>
+      <div class="compare-row">
+        <span class="mono">Contrato</span>
+        <span class="market">11 meses, avalista y fianza de 2–3 mensualidades</span>
+        <span class="raices">Desde 6 meses, sin avalistas, fianza única razonable</span>
+      </div>
+      <div class="compare-row">
+        <span class="mono">Para quién</span>
+        <span class="market">Indiferente: turistas, estudiantes, expats, locales</span>
+        <span class="raices">Profesionales jóvenes locales con trabajo estable</span>
+      </div>
+      <div class="compare-row">
+        <span class="mono">Gestión</span>
+        <span class="market">Casero particular, respuesta lenta, mantenimiento ad-hoc</span>
+        <span class="raices">Equipo profesional, app de incidencias, mantenimiento 24h</span>
+      </div>
+      <div class="compare-row">
+        <span class="mono">Misión</span>
+        <span class="market">Maximizar la rentabilidad por noche</span>
+        <span class="raices">Que los malagueños sigan pudiendo vivir en Málaga</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDIFICIO ===== -->
+<section class="edificio" id="edificio">
+  <div class="container">
+    <div class="edificio-inner">
+      <div class="edificio-info reveal">
+        <span class="mono">Cap. 05 — El edificio</span>
+        <h2>Primer edificio en La Trinidad.</h2>
+        <p>Un barrio histórico, auténtico, bien conectado. A diez minutos andando del centro y con la Málaga real al otro lado de la puerta.</p>
+
+        <div class="edificio-facts">
+          <div class="fact"><span class="num">10–12</span><span class="desc">Habitaciones privadas con baño</span></div>
+          <div class="fact"><span class="num">4</span><span class="desc">Plantas con ascensor</span></div>
+          <div class="fact"><span class="num">3</span><span class="desc">Zonas comunes amplias</span></div>
+          <div class="fact"><span class="num">1</span><span class="desc">Terraza con vistas</span></div>
+        </div>
+      </div>
+
+      <div class="reveal delay-1">
+        <div class="map-arch">
+          <div class="map-arch-frame">
+            <div class="map-arch-bg"></div>
+            <div class="map-pin">
+              <div class="pin-pulse"></div>
+              <div class="pin-circle"></div>
+            </div>
+            <div class="map-arch-caption">
+              <span class="place">La Trinidad</span>
+              <span class="city">Málaga · Próximamente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contacto" id="contacto">
+  <div class="container contacto-inner">
+    <span class="mono">Cap. 06 — Lista de espera</span>
+    <h2>Sé de los primeros en entrar.</h2>
+    <p>Quedan pocas plazas en la primera promoción. Apúntate sin compromiso y te avisaremos antes que a nadie cuando se abra el proceso de selección.</p>
+
+    <form id="waitlist-form" class="form" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Cómo te llamas" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="profesion">Profesión</label>
+          <input type="text" id="profesion" name="profesion" required placeholder="A qué te dedicas" />
+        </div>
+        <div class="form-group">
+          <label for="cuando">¿Cuándo?</label>
+          <select id="cuando" name="cuando" required>
+            <option value="">Elige...</option>
+            <option value="ya">Ya, lo antes posible</option>
+            <option value="3m">En los próximos 3 meses</option>
+            <option value="6m">En los próximos 6 meses</option>
+            <option value="explorando">Solo estoy explorando</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn form-submit">
+        Únete a la lista de espera
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12 L19 12 M13 6 L19 12 L13 18"/></svg>
+      </button>
+      <p class="form-disclaimer">Sin spam · Solo escribimos cuando hay novedades reales</p>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <div class="form-success-arch">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+      </div>
+      <h3>Estás dentro.</h3>
+      <p>Te hemos añadido a la lista. Te avisaremos por email cuando abramos selección.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Raíces <span class="by">por Sadala</span></div>
+        <div class="footer-tagline">Para los de aquí.</div>
+        <p>Coliving asequible para jóvenes profesionales malagueños. Una iniciativa de SADALA, promotora de Málaga.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#solucion">Cómo funciona</a></li>
+          <li><a href="#para-quien">Para quién</a></li>
+          <li><a href="#edificio">El edificio</a></li>
+          <li><a href="#contacto">Lista de espera</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SADALA</h4>
+        <ul>
+          <li><a href="https://sadala.es" target="_blank" rel="noopener">sadala.es ↗</a></li>
+          <li><a href="mailto:hola@sadala.es">hola@sadala.es</a></li>
+          <li><a href="../">Otras versiones ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SADALA</span>
+      <span>Hecho en Málaga, con raíces.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('visible'));
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fields = ['nombre', 'email', 'profesion', 'cuando'];
+      let ok = true;
+      fields.forEach((f) => {
+        const el = form[f];
+        if (!el.value.trim()) {
+          el.style.borderBottomColor = '#b54a25';
+          el.addEventListener('input', () => { el.style.borderBottomColor = ''; }, { once: true });
+          ok = false;
+        }
+      });
+      if (!ok) return;
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim());
+      if (!emailOk) {
+        form.email.style.borderBottomColor = '#b54a25';
+        form.email.addEventListener('input', () => { form.email.style.borderBottomColor = ''; }, { once: true });
+        return;
+      }
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

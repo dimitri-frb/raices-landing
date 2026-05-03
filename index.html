@@ -367,6 +367,108 @@ section { padding: var(--section-y) 0; position: relative; }
 .price-card ul li { color: var(--cream); padding: 0.4rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
 .price-card ul li::before { content: '✓'; color: var(--ochre); font-weight: bold; }
 
+/* Solución: photo + price card row */
+.solucion-top {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 2.2rem;
+  align-items: stretch;
+  margin-bottom: clamp(60px, 8vw, 96px);
+}
+@media (max-width: 900px) { .solucion-top { grid-template-columns: 1fr; } }
+.solucion-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 380px;
+  box-shadow: var(--shadow-lg);
+}
+.solucion-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.solucion-photo .photo-tag {
+  position: absolute;
+  bottom: 1.2rem; left: 1.2rem;
+  background: rgba(61, 31, 21, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--cream);
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+}
+
+/* Perks grid (6) */
+.perks-section { margin-top: clamp(48px, 6vw, 72px); }
+.perks-head {
+  text-align: center;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+.perks-head h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: var(--linen);
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+}
+.perks-head p {
+  color: rgba(245, 237, 224, 0.7);
+  font-size: 1rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+.perks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(245, 237, 224, 0.12);
+  border: 1px solid rgba(245, 237, 224, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+@media (max-width: 800px) { .perks-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .perks-grid { grid-template-columns: 1fr; } }
+.perk {
+  background: var(--clay-deep);
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.25s ease;
+}
+.perk:hover { background: #4a2519; }
+.perk-icon {
+  width: 56px; height: 56px;
+  margin-bottom: 1.2rem;
+  border-radius: 50%;
+  background: rgba(212, 155, 63, 0.14);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ochre);
+  flex-shrink: 0;
+  transition: background 0.25s ease, transform 0.3s ease;
+}
+.perk:hover .perk-icon { background: rgba(212, 155, 63, 0.22); transform: scale(1.05); }
+.perk h4 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--linen);
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+.perk p {
+  color: rgba(245, 237, 224, 0.72);
+  font-size: 0.93rem;
+  line-height: 1.55;
+  max-width: 260px;
+}
+
 /* ================== PARA QUIÉN ================== */
 .personas { background: var(--linen); }
 .personas-grid {
@@ -501,29 +603,24 @@ section { padding: var(--section-y) 0; position: relative; }
   border: 1px solid var(--line);
 }
 .map-visual {
-  height: 320px;
+  height: 360px;
   position: relative;
-  background:
-    linear-gradient(135deg, #e8d9bd 0%, #d4bf9a 100%);
+  background: linear-gradient(135deg, #e8d9bd 0%, #d4bf9a 100%);
   overflow: hidden;
 }
-.map-visual::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(0deg, rgba(92, 46, 31, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(92, 46, 31, 0.12) 1px, transparent 1px);
-  background-size: 32px 32px;
+.map-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .map-visual::after {
   content: '';
-  position: absolute;
-  width: 80%; height: 6px;
-  background: var(--sage);
-  top: 60%; left: -10%;
-  transform: rotate(-12deg);
-  opacity: 0.4;
-  border-radius: 3px;
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(61, 31, 21, 0.35) 100%);
+  pointer-events: none;
 }
 .map-pin {
   position: absolute;
@@ -871,47 +968,13 @@ section { padding: var(--section-y) 0; position: relative; }
       <p>RAÍCES no es una residencia de estudiantes ni un hostal. Es un espacio pensado para profesionales jóvenes que quieren vivir bien, sin renunciar a ahorrar y sin firmar un contrato que les ate.</p>
     </div>
 
-    <div class="solucion-grid">
-      <div class="features-list">
-        <div class="feature-item reveal">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 L12 3 L21 12"/><path d="M5 10 L5 21 L19 21 L19 10"/><path d="M9 21 L9 14 L15 14 L15 21"/></svg>
-          </div>
-          <div class="feature-text">
-            <h4>Habitación privada con baño</h4>
-            <p>Tu espacio. Cama de matrimonio, escritorio, almacenamiento, baño en suite. Sin compartir con desconocidos.</p>
-          </div>
-        </div>
-        <div class="feature-item reveal delay-1">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4 L20 4 L20 20 L4 20 Z"/><path d="M4 12 L20 12 M12 4 L12 20"/></svg>
-          </div>
-          <div class="feature-text">
-            <h4>Zonas comunes de calidad</h4>
-            <p>Cocina equipada, salón de lectura, sala de coworking, terraza con vistas. Diseñadas para usarlas, no para la foto.</p>
-          </div>
-        </div>
-        <div class="feature-item reveal delay-2">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21 C4 16 7 14 12 14 C17 14 20 16 20 21"/></svg>
-          </div>
-          <div class="feature-text">
-            <h4>Gestión profesional</h4>
-            <p>Limpieza semanal de zonas comunes, mantenimiento 24h, app de incidencias. Tú vives, nosotros nos ocupamos del resto.</p>
-          </div>
-        </div>
-        <div class="feature-item reveal delay-3">
-          <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/></svg>
-          </div>
-          <div class="feature-text">
-            <h4>Todo incluido</h4>
-            <p>Luz, agua, gas, internet de fibra, limpieza y mantenimiento. Una sola cuota, sin sorpresas a fin de mes.</p>
-          </div>
-        </div>
+    <div class="solucion-top">
+      <div class="solucion-photo reveal">
+        <img src="assets/bedroom-desk.webp" alt="Habitación privada en RAÍCES — cama, escritorio y armario abierto" loading="lazy" />
+        <span class="photo-tag">Tu habitación</span>
       </div>
 
-      <div class="price-card reveal delay-2">
+      <div class="price-card reveal delay-1">
         <span class="label">Cuota mensual</span>
         <div class="price"><small>desde</small>600€<span class="per">/ mes</span></div>
         <p class="desc">Habitación privada con baño, todos los suministros, conexión de fibra y acceso completo a zonas comunes.</p>
@@ -920,6 +983,87 @@ section { padding: var(--section-y) 0; position: relative; }
           <li>Contratos desde 6 meses</li>
           <li>Sin avalistas ni nóminas imposibles</li>
         </ul>
+      </div>
+    </div>
+
+    <div class="perks-section">
+      <div class="perks-head reveal">
+        <h3>Lo que incluye vivir aquí.</h3>
+        <p>Una sola cuota cubre todo lo que necesitas para vivir bien y poder concentrarte en tu vida.</p>
+      </div>
+
+      <div class="perks-grid">
+        <div class="perk reveal">
+          <div class="perk-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M8 12 L11 15 L16 9"/>
+            </svg>
+          </div>
+          <h4>Alquiler todo incluido</h4>
+          <p>Una sola cuota: luz, agua, gas, internet de fibra y mantenimiento. Sin facturas sueltas, sin sorpresas.</p>
+        </div>
+
+        <div class="perk reveal delay-1">
+          <div class="perk-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 18 L3 12 C3 10 4 9 6 9 L18 9 C20 9 21 10 21 12 L21 18"/>
+              <path d="M2 18 L22 18 L22 20 L2 20 Z"/>
+              <path d="M5 9 L5 7 C5 6 6 5 7 5 L17 5 C18 5 19 6 19 7 L19 9"/>
+            </svg>
+          </div>
+          <h4>Habitación privada con baño</h4>
+          <p>Tu espacio: cama de matrimonio, escritorio, almacenamiento y baño en suite. Sin compartir con desconocidos.</p>
+        </div>
+
+        <div class="perk reveal delay-2">
+          <div class="perk-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8 L20 8 L20 20 L4 20 Z"/>
+              <path d="M4 12 L20 12"/>
+              <circle cx="9" cy="16" r="1.5"/>
+              <circle cx="15" cy="16" r="1.5"/>
+              <path d="M8 8 L8 5 M16 8 L16 5"/>
+            </svg>
+          </div>
+          <h4>Cocina equipada</h4>
+          <p>Cocinar, compartir o calentar lo del táper. Una cocina pensada para vivirla, con todo lo necesario.</p>
+        </div>
+
+        <div class="perk reveal">
+          <div class="perk-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 C12 3 7 7 7 12 C7 15 9 17 12 17 C15 17 17 15 17 12 C17 7 12 3 12 3 Z"/>
+              <path d="M12 17 L12 21 M9 21 L15 21"/>
+            </svg>
+          </div>
+          <h4>Terraza y zonas comunes</h4>
+          <p>Salón, sala de coworking y terraza con vistas. Espacio para respirar, leer, trabajar o hacer una cena.</p>
+        </div>
+
+        <div class="perk reveal delay-1">
+          <div class="perk-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 L13.5 8.5 L19 10 L13.5 11.5 L12 17 L10.5 11.5 L5 10 L10.5 8.5 Z"/>
+              <path d="M18 16 L19 18 L21 19 L19 20 L18 22 L17 20 L15 19 L17 18 Z"/>
+            </svg>
+          </div>
+          <h4>Limpieza y mantenimiento</h4>
+          <p>Limpieza semanal de zonas comunes y mantenimiento 24h por un equipo profesional. Sin discusiones de calendario.</p>
+        </div>
+
+        <div class="perk reveal delay-2">
+          <div class="perk-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="9" r="3"/>
+              <circle cx="17" cy="10" r="2.5"/>
+              <path d="M3 19 C3 15.5 5.5 14 9 14 C12.5 14 15 15.5 15 19"/>
+              <path d="M14 18.5 C14.5 16 16 15 17 15 C19 15 21 16 21 18.5"/>
+            </svg>
+          </div>
+          <h4>Comunidad real</h4>
+          <p>Vecinos profesionales y de aquí. Cenas de bienvenida, eventos y gente con la que de verdad puedes contar.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1080,6 +1224,7 @@ section { padding: var(--section-y) 0; position: relative; }
 
       <div class="map-card reveal delay-1">
         <div class="map-visual">
+          <img src="assets/terrace.webp" alt="Terraza compartida con palmeras y zona chill — visión del edificio RAÍCES" loading="lazy" />
           <div class="map-pin">
             <span class="pin-label">La Trinidad</span>
             <div class="pin-pulse"></div>

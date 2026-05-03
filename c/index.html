@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RAÍCES by SADALA — Coliving asequible para jóvenes profesionales malagueños. Tu primer hogar en Málaga." />
+<meta name="theme-color" content="#2a1612" />
+<title>RAÍCES by SADALA — Para los de aquí.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232a1612'/%3E%3Ccircle cx='32' cy='28' r='10' fill='%23d99a3f'/%3E%3Cpath d='M22 42 Q32 50 42 42' stroke='%23f4e8d4' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<style>
+:root {
+  --clay-deep: #2a1612;
+  --clay: #3d2218;
+  --clay-warm: #4a2a1e;
+  --sienna: #c44523;
+  --sienna-deep: #9c3819;
+  --sienna-soft: #d97a52;
+  --ochre: #d99a3f;
+  --ochre-warm: #e6b260;
+  --ochre-deep: #b3792a;
+  --cream: #f4e8d4;
+  --cream-warm: #ead6b8;
+  --cream-soft: #fdf6e8;
+  --sage: #8a9a7b;
+  --sage-deep: #5e6e54;
+  --olive: #4a5440;
+  --hairline: rgba(244, 232, 212, 0.14);
+  --hairline-dark: rgba(42, 22, 18, 0.12);
+  --shadow-warm: 0 24px 60px rgba(42, 22, 18, 0.25);
+  --container: 1180px;
+  --section-y: clamp(80px, 11vw, 140px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--cream);
+  background: var(--clay-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(3.4rem, 11vw, 7.5rem); }
+h2 { font-size: clamp(2.4rem, 5.5vw, 4rem); margin-bottom: 1rem; }
+h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+
+.script {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--ochre);
+  margin-bottom: 1.2rem;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 44px);
+}
+
+section { padding: var(--section-y) 0; position: relative; }
+
+.section-light { background: var(--cream); color: var(--clay-deep); }
+.section-light h1, .section-light h2, .section-light h3, .section-light h4 { color: var(--clay-deep); }
+.section-light .eyebrow { color: var(--sienna); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.05rem 2.2rem;
+  background: var(--ochre);
+  color: var(--clay-deep);
+  font-weight: 600;
+  font-size: 0.96rem;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(217, 154, 63, 0.35);
+}
+.btn:hover { background: var(--ochre-warm); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(217, 154, 63, 0.45); }
+.btn .arrow { transition: transform 0.2s ease; }
+.btn:hover .arrow { transform: translate(2px, -2px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 1.5px solid var(--cream);
+  box-shadow: none;
+}
+.section-light .btn-ghost { color: var(--clay-deep); border-color: var(--clay-deep); }
+.btn-ghost:hover { background: var(--cream); color: var(--clay-deep); }
+.section-light .btn-ghost:hover { background: var(--clay-deep); color: var(--cream); }
+
+/* ================== NAV ================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.1rem 0;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(42, 22, 18, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.7rem 0;
+  box-shadow: 0 1px 0 var(--hairline);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.55rem;
+  color: var(--cream);
+  letter-spacing: 0.01em;
+  display: flex; align-items: baseline; gap: 0.5rem;
+}
+.logo .by { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--ochre); font-weight: 500; transform: rotate(-2deg); display: inline-block; }
+.nav-right { display: flex; gap: 1.3rem; align-items: center; }
+.nav-back {
+  font-size: 0.78rem;
+  color: rgba(244, 232, 212, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.nav-back:hover { color: var(--ochre); }
+.nav-cta {
+  font-size: 0.92rem;
+  padding: 0.6rem 1.3rem;
+  background: var(--ochre);
+  color: var(--clay-deep);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.nav-cta:hover { background: var(--ochre-warm); }
+
+/* ================== HERO ================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 90px;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(196, 69, 35, 0.15), transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(217, 154, 63, 0.12), transparent 50%),
+    var(--clay-deep);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 880px;
+}
+.hero-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--ochre);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+.hero h1 {
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+.hero .accent-line {
+  display: inline-block;
+  position: relative;
+  color: var(--ochre);
+  font-style: italic;
+}
+.hero .accent-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0.05em;
+  left: -2%;
+  width: 104%;
+  height: 14px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'><path d='M2 8 Q40 2, 80 7 T160 6 T198 9' stroke='%23d99a3f' stroke-width='3' fill='none' stroke-linecap='round'/></svg>") no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+.hero-sub {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  color: rgba(244, 232, 212, 0.85);
+  font-weight: 300;
+  margin: 1.8rem 0 2.5rem;
+  max-width: 560px;
+  line-height: 1.5;
+}
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+.hero-meta {
+  margin-top: 3rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  color: rgba(244, 232, 212, 0.65);
+}
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
+.hero-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ochre); }
+
+/* Hero illustrations */
+.hero-illu {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.95;
+}
+.hero-illu.geranium {
+  bottom: -20px;
+  left: -30px;
+  width: clamp(160px, 22vw, 280px);
+}
+.hero-illu.sun {
+  top: 110px;
+  right: -40px;
+  width: clamp(180px, 25vw, 320px);
+}
+.hero-illu.tile {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  z-index: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'><g fill='none' stroke='%23f4e8d4' stroke-width='1.2'><path d='M45 5 L85 45 L45 85 L5 45 Z'/><circle cx='45' cy='45' r='12'/><path d='M45 27 L63 45 L45 63 L27 45 Z'/></g></svg>");
+  background-size: 90px 90px;
+}
+
+@media (max-width: 700px) {
+  .hero-illu.sun { width: 160px; top: 80px; right: -50px; }
+  .hero-illu.geranium { width: 130px; left: -40px; bottom: -10px; }
+}
+
+/* ================== SECTION HEAD ================== */
+.section-head {
+  max-width: 720px;
+  margin-bottom: clamp(50px, 7vw, 80px);
+}
+.section-head h2 {
+  font-style: italic;
+}
+.section-head .script-accent {
+  font-family: 'Caveat', cursive;
+  color: var(--sienna);
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  transform: rotate(-1deg);
+}
+.section-light .section-head .script-accent { color: var(--sienna); }
+.section-head p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: rgba(42, 22, 18, 0.7);
+}
+section:not(.section-light) .section-head p { color: rgba(244, 232, 212, 0.75); }
+
+/* ================== PROBLEMA (light) ================== */
+.problema { background: var(--cream); color: var(--clay-deep); }
+.problema h1, .problema h2, .problema h3, .problema h4 { color: var(--clay-deep); }
+.problema .eyebrow { color: var(--sienna); }
+
+.problema-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 800px) { .problema-grid { grid-template-columns: 1fr; } }
+
+.problem-card {
+  background: var(--cream-soft);
+  border: 1px solid rgba(42, 22, 18, 0.08);
+  border-radius: 18px;
+  padding: 2.4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.problem-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(42, 22, 18, 0.12); }
+.problem-card .illu {
+  width: 56px; height: 56px;
+  margin-bottom: 1.2rem;
+  color: var(--sienna);
+}
+.problem-card .stat {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  color: var(--sienna);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+.problem-card .stat .unit {
+  font-family: 'Caveat', cursive;
+  font-size: 0.6em;
+  font-style: normal;
+  color: var(--ochre-deep);
+  margin-left: 0.4rem;
+}
+.problem-card h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--clay-deep);
+  font-style: italic;
+}
+.problem-card p { color: rgba(42, 22, 18, 0.7); font-size: 0.97rem; line-height: 1.6; }
+
+/* ================== SOLUCIÓN (dark) ================== */
+.solucion {
+  background: var(--clay-deep);
+  position: relative;
+  overflow: hidden;
+}
+.solucion::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(196, 69, 35, 0.18) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.solucion::after {
+  content: '';
+  position: absolute;
+  bottom: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(217, 154, 63, 0.12) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.solucion .container { position: relative; z-index: 1; }
+.solucion h2 { color: var(--cream); }
+.solucion .eyebrow { color: var(--ochre); }
+
+.solucion-intro { max-width: 720px; margin-bottom: 3.5rem; }
+.solucion-intro p { font-size: 1.15rem; color: rgba(244, 232, 212, 0.8); margin-top: 0.5rem; }
+
+.solucion-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: stretch;
+}
+@media (max-width: 900px) { .solucion-grid { grid-template-columns: 1fr; } }
+
+.features-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.feature-item {
+  display: flex;
+  gap: 1.4rem;
+  padding: 1.6rem;
+  background: var(--clay);
+  border: 1px solid rgba(244, 232, 212, 0.08);
+  border-radius: 14px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.feature-item:hover { background: var(--clay-warm); border-color: rgba(217, 154, 63, 0.4); }
+.feature-num {
+  flex-shrink: 0;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--ochre);
+  line-height: 1;
+  width: 44px;
+}
+.feature-text h4 {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.feature-text p { color: rgba(244, 232, 212, 0.7); font-size: 0.96rem; line-height: 1.55; }
+
+.price-card {
+  background: linear-gradient(165deg, var(--sienna) 0%, var(--sienna-deep) 100%);
+  border-radius: 22px;
+  padding: 2.8rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  display: flex;
+  flex-direction: column;
+}
+.price-card::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, var(--ochre) 0%, transparent 70%);
+  opacity: 0.45;
+  border-radius: 50%;
+}
+.price-card .script-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--ochre-warm);
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.price-card .price {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(3.4rem, 8vw, 5rem);
+  color: var(--cream);
+  line-height: 1;
+  margin: 0.4rem 0 0.6rem;
+  position: relative; z-index: 1;
+}
+.price-card .price small { font-size: 0.32em; vertical-align: super; opacity: 0.85; margin-right: 0.3em; font-style: normal; }
+.price-card .price .per { font-family: 'Inter', sans-serif; font-style: normal; font-size: 0.22em; opacity: 0.9; font-weight: 400; margin-left: 0.4em; }
+.price-card .desc { color: rgba(244, 232, 212, 0.95); font-size: 1rem; margin-top: 0.6rem; line-height: 1.55; position: relative; z-index: 1; }
+.price-card ul {
+  list-style: none;
+  margin-top: auto;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(244, 232, 212, 0.25);
+  position: relative; z-index: 1;
+}
+.price-card ul li {
+  color: var(--cream);
+  padding: 0.45rem 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.price-card ul li::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--ochre);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ================== PERSONAS (light) ================== */
+.personas { background: var(--cream-soft); color: var(--clay-deep); }
+.personas h2 { color: var(--clay-deep); }
+.personas .eyebrow { color: var(--sienna); }
+
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 900px) { .personas-grid { grid-template-columns: 1fr; } }
+
+.persona-card {
+  background: var(--cream);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(42, 22, 18, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.persona-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(42, 22, 18, 0.18); }
+.persona-illu {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.persona-card:nth-child(1) .persona-illu { background: linear-gradient(160deg, #e69155 0%, #c44523 100%); }
+.persona-card:nth-child(2) .persona-illu { background: linear-gradient(160deg, #a4b395 0%, #5e6e54 100%); }
+.persona-card:nth-child(3) .persona-illu { background: linear-gradient(160deg, #e6b260 0%, #b3792a 100%); }
+.persona-illu svg { width: 100%; height: 100%; }
+.persona-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+.persona-name {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--clay-deep);
+  margin-bottom: 0.2rem;
+}
+.persona-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--sienna);
+  display: block;
+  margin: -0.5rem 0 0.8rem;
+}
+.persona-role { font-size: 0.85rem; color: rgba(42, 22, 18, 0.6); font-weight: 500; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.persona-quote {
+  color: rgba(42, 22, 18, 0.85);
+  font-size: 0.97rem;
+  line-height: 1.6;
+  border-left: 3px solid var(--ochre);
+  padding-left: 1rem;
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* ================== DIFERENCIADORES (dark) ================== */
+.diferenciadores {
+  background: var(--clay-deep);
+  position: relative;
+  overflow: hidden;
+}
+.diferenciadores::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><g fill='none' stroke='%23f4e8d4' stroke-width='0.7' opacity='0.08'><path d='M40 5 L75 40 L40 75 L5 40 Z'/><circle cx='40' cy='40' r='10'/></g></svg>");
+  pointer-events: none;
+}
+.diferenciadores .container { position: relative; z-index: 1; }
+.diferenciadores h2 { color: var(--cream); }
+.diferenciadores .eyebrow { color: var(--ochre); }
+
+.compare-wrap {
+  background: var(--clay);
+  border: 1px solid rgba(244, 232, 212, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  overflow-x: auto;
+}
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+.compare th, .compare td {
+  padding: 1.4rem 1.6rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(244, 232, 212, 0.08);
+  font-size: 0.98rem;
+  vertical-align: top;
+}
+.compare thead th {
+  background: var(--clay-warm);
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--cream);
+  border-bottom: 2px solid var(--ochre);
+}
+.compare thead th:first-child {
+  background: var(--clay-warm);
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ochre);
+  font-weight: 600;
+}
+.compare thead th.raices-col {
+  background: linear-gradient(135deg, var(--sienna) 0%, var(--sienna-deep) 100%);
+  color: var(--cream);
+}
+.compare tbody tr:last-child td { border-bottom: none; }
+.compare tbody td:first-child {
+  font-weight: 600;
+  color: var(--ochre);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  width: 22%;
+}
+.compare td.raices-col { background: rgba(196, 69, 35, 0.1); color: var(--cream); font-weight: 500; }
+.compare td.market-col { color: rgba(244, 232, 212, 0.7); }
+.compare tbody tr:hover td { background: rgba(217, 154, 63, 0.06); }
+.compare tbody tr:hover td.raices-col { background: rgba(196, 69, 35, 0.15); }
+
+/* ================== EDIFICIO (light) ================== */
+.edificio { background: var(--cream); color: var(--clay-deep); position: relative; overflow: hidden; }
+.edificio h2 { color: var(--clay-deep); }
+.edificio .eyebrow { color: var(--sienna); }
+
+.edificio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 900px) { .edificio-grid { grid-template-columns: 1fr; } }
+
+.edificio-info .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  background: var(--sage);
+  color: var(--cream);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+.edificio-info .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cream); }
+.edificio-info h2 { font-style: italic; margin-bottom: 1rem; }
+.edificio-info > p { color: rgba(42, 22, 18, 0.7); font-size: 1.05rem; max-width: 480px; margin-bottom: 2rem; }
+.edificio-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--sienna);
+  display: block;
+  margin-bottom: 2rem;
+  transform: rotate(-1deg);
+}
+.edificio-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.fact {
+  background: var(--cream-soft);
+  border: 1px solid rgba(42, 22, 18, 0.08);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem;
+}
+.fact .num {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 2.4rem;
+  color: var(--sienna);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.fact .desc { font-size: 0.88rem; color: rgba(42, 22, 18, 0.7); line-height: 1.4; }
+
+.map-card {
+  position: relative;
+  background: var(--cream-soft);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-warm);
+  border: 1px solid rgba(42, 22, 18, 0.08);
+}
+.map-illu-corner {
+  position: absolute;
+  top: -10px; right: -20px;
+  width: 130px;
+  height: 130px;
+  z-index: 3;
+  pointer-events: none;
+}
+.map-visual {
+  height: 320px;
+  position: relative;
+  background: linear-gradient(135deg, #ead6b8 0%, #d4ba90 100%);
+  overflow: hidden;
+}
+.map-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(42, 22, 18, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 22, 18, 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.map-visual::after {
+  content: '';
+  position: absolute;
+  width: 90%; height: 5px;
+  background: var(--sage);
+  top: 60%; left: -5%;
+  transform: rotate(-10deg);
+  opacity: 0.45;
+  border-radius: 3px;
+}
+.map-pin {
+  position: absolute;
+  top: 45%; left: 52%;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+}
+.map-pin .pin-circle {
+  width: 36px; height: 36px;
+  background: var(--sienna);
+  border-radius: 50%;
+  border: 4px solid var(--cream);
+  box-shadow: 0 4px 12px rgba(42, 22, 18, 0.3);
+  position: relative;
+}
+.map-pin .pin-pulse {
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  background: var(--sienna);
+  opacity: 0.4;
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.map-pin .pin-label {
+  position: absolute;
+  top: -42px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--clay-deep);
+  color: var(--cream);
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+.map-pin .pin-label::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--clay-deep);
+}
+.map-caption {
+  padding: 1.3rem 1.6rem;
+  border-top: 1px solid rgba(42, 22, 18, 0.08);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  flex-wrap: wrap;
+}
+.map-caption .place { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.3rem; color: var(--clay-deep); }
+.map-caption .city { font-size: 0.85rem; color: rgba(42, 22, 18, 0.6); }
+.map-caption .status {
+  font-size: 0.72rem; font-weight: 600;
+  background: var(--sage); color: var(--cream);
+  padding: 0.35rem 0.8rem; border-radius: 999px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+
+/* ================== CONTACTO (dark) ================== */
+.contacto {
+  background: var(--clay-deep);
+  position: relative;
+  overflow: hidden;
+}
+.contacto::before {
+  content: '';
+  position: absolute;
+  top: 50px; left: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(196, 69, 35, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contacto::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(217, 154, 63, 0.12) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contacto-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .contacto-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.contacto-info h2 { color: var(--cream); margin-bottom: 1rem; font-style: italic; }
+.contacto-info > p { color: rgba(244, 232, 212, 0.75); font-size: 1.05rem; margin-bottom: 2rem; }
+.contacto-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: var(--ochre);
+  display: block;
+  margin-bottom: 0.5rem;
+  transform: rotate(-1.5deg);
+}
+
+.contacto-points { display: flex; flex-direction: column; gap: 1.2rem; }
+.contacto-point { display: flex; gap: 1rem; align-items: flex-start; }
+.contacto-point .num {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  background: var(--sienna);
+  color: var(--cream);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.contacto-point h4 { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.15rem; color: var(--cream); margin-bottom: 0.2rem; font-weight: 400; }
+.contacto-point p { font-size: 0.92rem; color: rgba(244, 232, 212, 0.7); }
+
+.form-wrap {
+  background: var(--cream);
+  border-radius: 22px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-warm);
+}
+@media (max-width: 600px) { .form-wrap { padding: 1.8rem; } }
+
+.form-wrap .script-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--sienna);
+  margin-bottom: 0.4rem;
+  display: block;
+  transform: rotate(-1deg);
+}
+.form-wrap > h3 {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--clay-deep);
+  margin-bottom: 1.8rem;
+}
+
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--clay-deep);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid rgba(42, 22, 18, 0.15);
+  border-radius: 10px;
+  background: var(--cream-soft);
+  color: var(--clay-deep);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--sienna);
+  box-shadow: 0 0 0 3px rgba(196, 69, 35, 0.12);
+}
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4 L6 8 L10 4' stroke='%232a1612' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-submit { width: 100%; justify-content: center; margin-top: 0.8rem; padding: 1.1rem; background: var(--sienna); color: var(--cream); }
+.form-submit:hover { background: var(--sienna-deep); }
+.form-disclaimer { text-align: center; font-size: 0.78rem; color: rgba(42, 22, 18, 0.6); margin-top: 1rem; }
+
+.form-success { display: none; text-align: center; padding: 2rem 1rem; }
+.form-success.show { display: block; animation: fadeIn 0.5s ease; }
+.form-success .check {
+  width: 64px; height: 64px;
+  margin: 0 auto 1.2rem;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cream);
+}
+.form-success h3 { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.7rem; color: var(--clay-deep); margin-bottom: 0.6rem; }
+.form-success p { color: rgba(42, 22, 18, 0.7); }
+.form-success .script-yay {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--sienna);
+  display: block;
+  margin-top: 0.8rem;
+}
+
+/* ================== FOOTER ================== */
+.footer {
+  background: #1c0d0a;
+  color: rgba(244, 232, 212, 0.8);
+  padding: 4rem 0 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><g fill='none' stroke='%23f4e8d4' stroke-width='0.5' opacity='0.08'><path d='M30 5 L55 30 L30 55 L5 30 Z'/></g></svg>");
+  pointer-events: none;
+}
+.footer .container { position: relative; z-index: 1; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer .logo { color: var(--cream); margin-bottom: 1rem; }
+.footer-tagline {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--ochre);
+  margin-bottom: 0.6rem;
+}
+.footer-script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--sienna-soft);
+  display: inline-block;
+  transform: rotate(-2deg);
+  margin-bottom: 1rem;
+}
+.footer-brand p { color: rgba(244, 232, 212, 0.6); font-size: 0.95rem; max-width: 320px; line-height: 1.55; }
+.footer-col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ochre);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a { color: rgba(244, 232, 212, 0.7); font-size: 0.95rem; transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--ochre); }
+.footer-bottom {
+  border-top: 1px solid rgba(244, 232, 212, 0.12);
+  padding-top: 1.8rem;
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: rgba(244, 232, 212, 0.55);
+}
+.footer-bottom .script {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--ochre);
+}
+
+/* ================== ANIMATIONS ================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.delay-1 { transition-delay: 0.08s; }
+.reveal.delay-2 { transition-delay: 0.16s; }
+.reveal.delay-3 { transition-delay: 0.24s; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+::selection { background: var(--ochre); color: var(--clay-deep); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">
+      RAÍCES <span class="by">por Sadala</span>
+    </a>
+    <div class="nav-right">
+      <a href="../" class="nav-back">← Opciones</a>
+      <a href="#contacto" class="nav-cta">Lista de espera</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-illu tile"></div>
+
+  <!-- Sun illustration -->
+  <svg class="hero-illu sun" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#d99a3f" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.55">
+      <line x1="160" y1="20" x2="160" y2="60"/>
+      <line x1="160" y1="260" x2="160" y2="300"/>
+      <line x1="20" y1="160" x2="60" y2="160"/>
+      <line x1="260" y1="160" x2="300" y2="160"/>
+      <line x1="56" y1="56" x2="84" y2="84"/>
+      <line x1="236" y1="236" x2="264" y2="264"/>
+      <line x1="56" y1="264" x2="84" y2="236"/>
+      <line x1="236" y1="84" x2="264" y2="56"/>
+    </g>
+    <circle cx="160" cy="160" r="80" fill="#d99a3f" opacity="0.85"/>
+    <circle cx="160" cy="160" r="80" fill="none" stroke="#c44523" stroke-width="2" opacity="0.6"/>
+    <g fill="#c44523" opacity="0.7">
+      <circle cx="140" cy="155" r="3"/>
+      <circle cx="180" cy="155" r="3"/>
+      <path d="M140 178 Q160 192 180 178" stroke="#c44523" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+
+  <!-- Geranium pot illustration -->
+  <svg class="hero-illu geranium" viewBox="0 0 220 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- leaves -->
+    <g fill="#5e6e54" opacity="0.85">
+      <ellipse cx="80" cy="115" rx="34" ry="22" transform="rotate(-25 80 115)"/>
+      <ellipse cx="140" cy="100" rx="36" ry="22" transform="rotate(20 140 100)"/>
+      <ellipse cx="60" cy="155" rx="30" ry="20" transform="rotate(-40 60 155)"/>
+      <ellipse cx="160" cy="150" rx="32" ry="20" transform="rotate(35 160 150)"/>
+      <ellipse cx="110" cy="80" rx="32" ry="22" transform="rotate(-5 110 80)"/>
+    </g>
+    <!-- flowers -->
+    <g fill="#c44523">
+      <circle cx="95" cy="65" r="9"/>
+      <circle cx="105" cy="58" r="8"/>
+      <circle cx="115" cy="65" r="9"/>
+      <circle cx="105" cy="72" r="8"/>
+      <circle cx="105" cy="65" r="6" fill="#d99a3f"/>
+    </g>
+    <g fill="#c44523">
+      <circle cx="155" cy="85" r="7"/>
+      <circle cx="163" cy="80" r="6"/>
+      <circle cx="171" cy="86" r="7"/>
+      <circle cx="163" cy="92" r="6"/>
+      <circle cx="163" cy="86" r="4" fill="#d99a3f"/>
+    </g>
+    <g fill="#e69155">
+      <circle cx="55" cy="110" r="7"/>
+      <circle cx="63" cy="106" r="6"/>
+      <circle cx="71" cy="111" r="7"/>
+      <circle cx="63" cy="116" r="6"/>
+    </g>
+    <!-- pot -->
+    <path d="M50 195 L170 195 L160 270 L60 270 Z" fill="#c44523"/>
+    <path d="M50 195 L170 195 L165 210 L55 210 Z" fill="#9c3819"/>
+    <line x1="65" y1="225" x2="155" y2="225" stroke="#9c3819" stroke-width="2" opacity="0.6"/>
+    <line x1="70" y1="245" x2="150" y2="245" stroke="#9c3819" stroke-width="2" opacity="0.4"/>
+  </svg>
+
+  <div class="container hero-content">
+    <span class="hero-eyebrow">Coliving en Málaga · Próxima apertura</span>
+    <h1>Para los <span class="accent-line">de aquí.</span></h1>
+    <p class="hero-sub">Tu primer hogar en Málaga. Habitación propia, zonas comunes con alma y todo incluido. Hecho con cariño, en La Trinidad.</p>
+    <div class="hero-cta-row">
+      <a href="#contacto" class="btn">
+        Quiero saber más
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"/></svg>
+      </a>
+      <a href="#solucion" class="btn btn-ghost">Cómo funciona</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span>Desde 600€/mes todo incluido</span>
+      <span><span class="dot"></span>La Trinidad, Málaga</span>
+      <span><span class="dot"></span>Apertura 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PROBLEMA ===== -->
+<section class="problema" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="script-accent">Hablemos claro</span>
+      <span class="eyebrow">El problema</span>
+      <h2>Málaga está perdiendo a su gente.</h2>
+      <p>El mercado del alquiler ha cambiado. Quienes nacieron y se formaron aquí no pueden permitirse vivir donde crecieron.</p>
+    </div>
+
+    <div class="problema-grid">
+      <div class="problem-card reveal delay-1">
+        <svg class="illu" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 22 L28 8 L48 22 L48 48 L8 48 Z"/>
+            <path d="M22 48 L22 32 L34 32 L34 48"/>
+            <circle cx="42" cy="28" r="2.5" fill="currentColor"/>
+          </g>
+        </svg>
+        <div class="stat">12.000<span class="unit">pisos</span></div>
+        <h3>Pisos turísticos en la ciudad</h3>
+        <p>El centro y los barrios consolidados se han transformado en alojamientos para turistas, no para vecinos.</p>
+      </div>
+      <div class="problem-card reveal delay-2">
+        <svg class="illu" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="28" cy="28" r="20"/>
+            <path d="M28 16 L28 40 M22 22 L34 22 M22 34 L34 34"/>
+          </g>
+        </svg>
+        <div class="stat">€900–1.100<span class="unit">/mes</span></div>
+        <h3>Un piso en el centro</h3>
+        <p>Alquilar un estudio en una zona céntrica supera ya el sueldo neto de muchos jóvenes profesionales.</p>
+      </div>
+      <div class="problem-card reveal delay-3">
+        <svg class="illu" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 36 L20 36 L24 28 L36 44 L40 36 L48 36"/>
+            <path d="M14 36 L14 48 M42 36 L42 48"/>
+          </g>
+        </svg>
+        <div class="stat" style="font-style:italic;">Se van<span class="unit">de su ciudad</span></div>
+        <h3>Los malagueños se marchan</h3>
+        <p>Enfermeras, profesores e ingenieros se mudan a la periferia o, peor, a otras provincias. Pierden raíces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUCIÓN ===== -->
+<section class="solucion" id="solucion">
+  <div class="container">
+    <div class="solucion-intro reveal">
+      <span class="eyebrow">La solución</span>
+      <h2>Un hogar adulto, asequible y con comunidad.</h2>
+      <p>RAÍCES no es una residencia de estudiantes ni un hostal. Es un espacio pensado para profesionales jóvenes que quieren vivir bien, sin renunciar a ahorrar y sin firmar un contrato que les ate.</p>
+    </div>
+
+    <div class="solucion-grid">
+      <div class="features-list">
+        <div class="feature-item reveal">
+          <div class="feature-num">01</div>
+          <div class="feature-text">
+            <h4>Habitación privada con baño</h4>
+            <p>Tu espacio. Cama de matrimonio, escritorio, almacenamiento, baño en suite. Sin compartir con desconocidos.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-1">
+          <div class="feature-num">02</div>
+          <div class="feature-text">
+            <h4>Zonas comunes con alma</h4>
+            <p>Cocina equipada, salón de lectura, sala de coworking, terraza con vistas. Diseñadas para usarlas, no para la foto.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-2">
+          <div class="feature-num">03</div>
+          <div class="feature-text">
+            <h4>Gestión profesional</h4>
+            <p>Limpieza semanal de zonas comunes, mantenimiento 24h, app de incidencias. Tú vives, nosotros nos ocupamos del resto.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-3">
+          <div class="feature-num">04</div>
+          <div class="feature-text">
+            <h4>Todo incluido</h4>
+            <p>Luz, agua, gas, internet de fibra, limpieza y mantenimiento. Una sola cuota, sin sorpresas a fin de mes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-card reveal delay-2">
+        <span class="script-label">Cuota mensual</span>
+        <div class="price"><small>desde</small>600€<span class="per">/ mes</span></div>
+        <p class="desc">Habitación privada con baño, todos los suministros, conexión de fibra y acceso completo a zonas comunes.</p>
+        <ul>
+          <li>Sin fianza desorbitada</li>
+          <li>Contratos desde 6 meses</li>
+          <li>Sin avalistas ni nóminas imposibles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PERSONAS ===== -->
+<section class="personas" id="para-quien">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="script-accent">Conoce a la gente</span>
+      <span class="eyebrow">Para quién</span>
+      <h2>Pensado para quienes hacen Málaga.</h2>
+      <p>Profesionales jóvenes con un trabajo estable, que necesitan vivir cerca y bien sin gastar la mitad de su sueldo en alquiler.</p>
+    </div>
+
+    <div class="personas-grid">
+      <article class="persona-card reveal">
+        <div class="persona-illu">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- background hand-drawn elements -->
+            <g fill="#f4e8d4" opacity="0.18">
+              <circle cx="30" cy="30" r="14"/>
+              <circle cx="170" cy="170" r="20"/>
+              <path d="M0 100 Q100 80 200 100" stroke="#f4e8d4" stroke-width="1" fill="none" opacity="0.5"/>
+            </g>
+            <!-- portrait -->
+            <g transform="translate(100,110)">
+              <circle r="40" fill="#f4e8d4"/>
+              <!-- hair -->
+              <path d="M-40 -10 Q-40 -45 0 -45 Q40 -45 40 -10 L40 5 Q35 -2 28 -2 L-28 -2 Q-35 -2 -40 5 Z" fill="#3d1f15"/>
+              <!-- eyes -->
+              <circle cx="-12" cy="-2" r="2.5" fill="#2a1612"/>
+              <circle cx="12" cy="-2" r="2.5" fill="#2a1612"/>
+              <!-- smile -->
+              <path d="M-10 14 Q0 22 10 14" stroke="#2a1612" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- scrubs -->
+              <path d="M-40 38 L-40 60 L40 60 L40 38 Z" fill="#f4e8d4"/>
+              <path d="M-3 38 L-3 50 M3 38 L3 50 M-8 44 L8 44" stroke="#c44523" stroke-width="1.4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Lucía, 28</h3>
+          <span class="persona-script">— Lucía 💛</span>
+          <p class="persona-role">Enfermera · Hospital Regional</p>
+          <p class="persona-quote">"Hago turnos de noche y vuelvo a un piso compartido con tres desconocidos. Quiero tranquilidad, mi propio baño y poder ahorrar para algún día comprarme algo."</p>
+        </div>
+      </article>
+
+      <article class="persona-card reveal delay-1">
+        <div class="persona-illu">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#f4e8d4" stroke-width="1" opacity="0.25">
+              <path d="M30 30 L170 30 L170 170 L30 170 Z"/>
+              <path d="M50 50 L150 50 M50 75 L150 75 M50 100 L150 100 M50 125 L120 125"/>
+            </g>
+            <g transform="translate(100,110)">
+              <circle r="40" fill="#f4e8d4"/>
+              <circle cx="-12" cy="-2" r="2.5" fill="#2a1612"/>
+              <circle cx="12" cy="-2" r="2.5" fill="#2a1612"/>
+              <path d="M-8 14 L8 14" stroke="#2a1612" stroke-width="2" stroke-linecap="round"/>
+              <path d="M-38 -10 Q-38 -42 0 -42 Q38 -42 38 -10 L38 0 L30 -6 L-30 -6 L-38 0 Z" fill="#3d1f15"/>
+              <path d="M-25 38 L-25 60 L25 60 L25 38 Z" fill="#5e6e54"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Marcos, 31</h3>
+          <span class="persona-script">— Marcos 🌿</span>
+          <p class="persona-role">Ingeniero · Parque Tecnológico</p>
+          <p class="persona-quote">"Trabajo en el PTA y vivir cerca me cambiaría la vida. Pero pagar 1.000€ por un estudio para acabar comiendo solo no tiene sentido. Quiero un sitio adulto."</p>
+        </div>
+      </article>
+
+      <article class="persona-card reveal delay-2">
+        <div class="persona-illu">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#f4e8d4" stroke-width="1" opacity="0.25">
+              <circle cx="100" cy="100" r="80"/>
+              <circle cx="100" cy="100" r="55"/>
+              <circle cx="100" cy="100" r="30"/>
+            </g>
+            <g transform="translate(100,110)">
+              <circle r="40" fill="#f4e8d4"/>
+              <circle cx="-12" cy="-2" r="2.5" fill="#2a1612"/>
+              <circle cx="12" cy="-2" r="2.5" fill="#2a1612"/>
+              <path d="M-10 14 Q0 18 10 14" stroke="#2a1612" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M-40 0 Q-40 -42 0 -42 Q40 -42 40 0 L40 30 L26 22 L-26 22 L-40 30 Z" fill="#5c2e1f"/>
+              <path d="M-28 38 L-28 60 L28 60 L28 38 Z" fill="#d99a3f"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Carmen, 26</h3>
+          <span class="persona-script">— Carmen 🌻</span>
+          <p class="persona-role">Profesora · Instituto público</p>
+          <p class="persona-quote">"Soy de Málaga, mi familia es de aquí. No quiero irme a Antequera o a Granada para poder pagar el alquiler. Solo quiero un piso digno, sin peleas con caseros."</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIADORES ===== -->
+<section class="diferenciadores" id="diferenciadores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Diferenciadores</span>
+      <h2>No somos un piso compartido más.</h2>
+      <p style="color:rgba(244,232,212,0.75);">Una alternativa real al mercado actual. Comparemos sin adornos.</p>
+    </div>
+
+    <div class="compare-wrap reveal delay-1">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Mercado actual</th>
+            <th class="raices-col">RAÍCES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Precio</td>
+            <td class="market-col">900–1.100€ por estudio<br/><span style="font-size:0.85em;">+ suministros aparte</span></td>
+            <td class="raices-col">Desde 600€/mes<br/><span style="font-size:0.85em;">todo incluido</span></td>
+          </tr>
+          <tr>
+            <td>Contrato</td>
+            <td class="market-col">11 meses con avalista, fianza de 2–3 mensualidades</td>
+            <td class="raices-col">Desde 6 meses, sin avalistas, fianza única razonable</td>
+          </tr>
+          <tr>
+            <td>Para quién</td>
+            <td class="market-col">Indiferente: turistas, estudiantes, expats, locales</td>
+            <td class="raices-col">Profesionales jóvenes locales con trabajo estable</td>
+          </tr>
+          <tr>
+            <td>Gestión</td>
+            <td class="market-col">Casero particular, respuesta lenta, mantenimiento ad-hoc</td>
+            <td class="raices-col">Equipo profesional, app de incidencias, mantenimiento 24h</td>
+          </tr>
+          <tr>
+            <td>Misión</td>
+            <td class="market-col">Maximizar la rentabilidad por noche</td>
+            <td class="raices-col">Que los malagueños sigan pudiendo vivir en Málaga</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDIFICIO ===== -->
+<section class="edificio" id="edificio">
+  <div class="container">
+    <div class="edificio-grid">
+      <div class="edificio-info reveal">
+        <span class="badge">Próxima apertura</span>
+        <h2>Primer edificio en La Trinidad.</h2>
+        <span class="edificio-script">Un barrio con alma.</span>
+        <p>Histórico, auténtico, bien conectado. A diez minutos andando del centro y con la Málaga real al otro lado de la puerta.</p>
+
+        <div class="edificio-facts">
+          <div class="fact"><span class="num">10–12</span><span class="desc">Habitaciones privadas con baño</span></div>
+          <div class="fact"><span class="num">4</span><span class="desc">Plantas con ascensor</span></div>
+          <div class="fact"><span class="num">3</span><span class="desc">Zonas comunes amplias</span></div>
+          <div class="fact"><span class="num">1</span><span class="desc">Terraza con vistas</span></div>
+        </div>
+      </div>
+
+      <div class="map-card reveal delay-1">
+        <!-- Geranium corner accent -->
+        <svg class="map-illu-corner" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="#5e6e54" opacity="0.85">
+            <ellipse cx="55" cy="50" rx="22" ry="14" transform="rotate(-25 55 50)"/>
+            <ellipse cx="85" cy="55" rx="22" ry="13" transform="rotate(25 85 55)"/>
+            <ellipse cx="70" cy="35" rx="20" ry="13" transform="rotate(-5 70 35)"/>
+          </g>
+          <g fill="#c44523">
+            <circle cx="55" cy="28" r="6"/>
+            <circle cx="62" cy="22" r="5"/>
+            <circle cx="69" cy="28" r="6"/>
+            <circle cx="62" cy="34" r="5"/>
+            <circle cx="62" cy="28" r="3" fill="#d99a3f"/>
+          </g>
+          <path d="M40 78 L100 78 L94 120 L46 120 Z" fill="#c44523"/>
+          <path d="M40 78 L100 78 L97 86 L43 86 Z" fill="#9c3819"/>
+        </svg>
+
+        <div class="map-visual">
+          <div class="map-pin">
+            <span class="pin-label">¡Aquí!</span>
+            <div class="pin-pulse"></div>
+            <div class="pin-circle"></div>
+          </div>
+        </div>
+        <div class="map-caption">
+          <div>
+            <div class="place">La Trinidad</div>
+            <div class="city">Málaga, España</div>
+          </div>
+          <span class="status">Próximamente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contacto" id="contacto">
+  <div class="container contacto-inner">
+    <div class="contacto-info reveal">
+      <span class="contacto-script">Apúntate sin compromiso</span>
+      <span class="eyebrow">Lista de espera</span>
+      <h2>Sé de los primeros en entrar.</h2>
+      <p>Quedan pocas plazas en la primera promoción. Apúntate y te avisaremos antes que a nadie cuando se abra el proceso de selección.</p>
+
+      <div class="contacto-points">
+        <div class="contacto-point">
+          <div class="num">1</div>
+          <div>
+            <h4>Te apuntas a la lista</h4>
+            <p>Nombre, email y un par de datos. Treinta segundos.</p>
+          </div>
+        </div>
+        <div class="contacto-point">
+          <div class="num">2</div>
+          <div>
+            <h4>Te avisamos primero</h4>
+            <p>Cuando abramos selección, los de la lista entran antes y con condiciones preferentes.</p>
+          </div>
+        </div>
+        <div class="contacto-point">
+          <div class="num">3</div>
+          <div>
+            <h4>Visitas y reservas</h4>
+            <p>Conoces el edificio, eliges habitación y firmas. Sin sorpresas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-wrap reveal delay-1">
+      <span class="script-label">¡Únete!</span>
+      <h3>Cuéntanos un poco de ti.</h3>
+      <form id="waitlist-form" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Cómo te llamas" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="profesion">Profesión</label>
+            <input type="text" id="profesion" name="profesion" required placeholder="A qué te dedicas" />
+          </div>
+          <div class="form-group">
+            <label for="cuando">¿Cuándo?</label>
+            <select id="cuando" name="cuando" required>
+              <option value="">Elige...</option>
+              <option value="ya">Ya, lo antes posible</option>
+              <option value="3m">En los próximos 3 meses</option>
+              <option value="6m">En los próximos 6 meses</option>
+              <option value="explorando">Solo estoy explorando</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn form-submit">
+          Únete a la lista de espera
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"/></svg>
+        </button>
+        <p class="form-disclaimer">Sin spam. Solo te escribimos cuando haya novedades reales.</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+        </div>
+        <h3>¡Estás dentro!</h3>
+        <p>Te hemos añadido a la lista. Te avisaremos por email cuando abramos selección.</p>
+        <span class="script-yay">Bienvenida a casa.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">RAÍCES <span class="by">por Sadala</span></div>
+        <div class="footer-tagline">Para los de aquí.</div>
+        <div class="footer-script">Tu primer hogar en Málaga.</div>
+        <p>Coliving asequible para jóvenes profesionales malagueños. Una iniciativa de SADALA, promotora de Málaga.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#solucion">Cómo funciona</a></li>
+          <li><a href="#para-quien">Para quién</a></li>
+          <li><a href="#edificio">El edificio</a></li>
+          <li><a href="#contacto">Lista de espera</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SADALA</h4>
+        <ul>
+          <li><a href="https://sadala.es" target="_blank" rel="noopener">sadala.es ↗</a></li>
+          <li><a href="mailto:hola@sadala.es">hola@sadala.es</a></li>
+          <li><a href="../">Otras versiones ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SADALA. Todos los derechos reservados.</span>
+      <span class="script">Hecho en Málaga, con raíces.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('visible'));
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fields = ['nombre', 'email', 'profesion', 'cuando'];
+      let ok = true;
+      fields.forEach((f) => {
+        const el = form[f];
+        if (!el.value.trim()) {
+          el.style.borderColor = '#c44523';
+          el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+          ok = false;
+        }
+      });
+      if (!ok) return;
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.value.trim());
+      if (!emailOk) {
+        form.email.style.borderColor = '#c44523';
+        form.email.addEventListener('input', () => { form.email.style.borderColor = ''; }, { once: true });
+        return;
+      }
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
