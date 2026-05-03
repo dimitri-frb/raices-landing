@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RAÍCES by SADALA — Coliving asequible para jóvenes profesionales malagueños. Tu primer hogar en Málaga." />
+<meta name="theme-color" content="#c2552d" />
+<title>RAÍCES by SADALA — Para los de aquí.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23c2552d'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='700' fill='%23f5ede0'%3ER%3C/text%3E%3C/svg%3E" />
+
+<style>
+:root {
+  --terracotta: #c2552d;
+  --terracotta-dark: #a04522;
+  --terracotta-soft: #d97a52;
+  --linen: #f5ede0;
+  --linen-warm: #ede2cc;
+  --cream: #faf5ec;
+  --ochre: #d49b3f;
+  --ochre-deep: #b8822e;
+  --sage: #8a9a7b;
+  --sage-deep: #6b7d5e;
+  --clay: #5c2e1f;
+  --clay-deep: #3d1f15;
+  --ink: #2a1a14;
+  --muted: #6b5d52;
+  --line: rgba(92, 46, 31, 0.12);
+  --shadow-sm: 0 2px 8px rgba(92, 46, 31, 0.06);
+  --shadow-md: 0 8px 24px rgba(92, 46, 31, 0.1);
+  --shadow-lg: 0 20px 50px rgba(92, 46, 31, 0.15);
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --container: 1180px;
+  --section-y: clamp(72px, 10vw, 128px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--clay-deep);
+}
+
+h1 { font-size: clamp(3rem, 9vw, 6rem); }
+h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: 1rem; }
+h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
+
+p { color: var(--ink); }
+.muted { color: var(--muted); }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+section { padding: var(--section-y) 0; position: relative; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 1.2rem;
+}
+
+.section-head { max-width: 760px; margin-bottom: clamp(40px, 6vw, 72px); }
+.section-head p { font-size: 1.1rem; color: var(--muted); margin-top: 0.5rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.05rem 2.2rem;
+  background: var(--terracotta);
+  color: var(--cream);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(194, 85, 45, 0.3);
+  letter-spacing: 0.01em;
+}
+.btn:hover { background: var(--terracotta-dark); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(194, 85, 45, 0.4); }
+.btn:active { transform: translateY(0); }
+.btn .arrow { transition: transform 0.2s ease; }
+.btn:hover .arrow { transform: translate(2px, -2px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--clay-deep);
+  border: 1.5px solid var(--clay);
+  box-shadow: none;
+}
+.btn-ghost:hover { background: var(--clay-deep); color: var(--cream); }
+
+/* ================== NAV ================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 1.1rem 0;
+  transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+.nav.scrolled {
+  background: rgba(250, 245, 236, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.7rem 0;
+  box-shadow: 0 1px 0 var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.55rem;
+  color: var(--clay-deep);
+  letter-spacing: 0.01em;
+  display: flex; align-items: baseline; gap: 0.5rem;
+}
+.logo .by { font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); font-weight: 500; }
+.nav-cta {
+  font-size: 0.92rem;
+  padding: 0.6rem 1.3rem;
+  background: var(--clay-deep);
+  color: var(--cream);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+.nav-cta:hover { background: var(--terracotta); }
+
+/* ================== HERO ================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0 80px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(212, 155, 63, 0.18), transparent 45%),
+    radial-gradient(circle at 82% 78%, rgba(138, 154, 123, 0.18), transparent 50%),
+    linear-gradient(180deg, var(--linen) 0%, var(--linen-warm) 100%);
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%235c2e1f' stroke-width='1.2'><path d='M60 10 L110 60 L60 110 L10 60 Z'/><path d='M60 25 L95 60 L60 95 L25 60 Z'/><circle cx='60' cy='60' r='18'/><path d='M60 42 L78 60 L60 78 L42 60 Z'/><path d='M0 60 L120 60 M60 0 L60 120'/></g></svg>");
+  background-size: 120px 120px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 940px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--clay);
+  margin-bottom: 1.8rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(92, 46, 31, 0.14);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.hero-eyebrow::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--terracotta);
+  box-shadow: 0 0 0 4px rgba(194, 85, 45, 0.18);
+}
+.hero h1 {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: var(--clay-deep);
+}
+.hero h1 .accent { color: var(--terracotta); }
+.hero-sub {
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: var(--clay);
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+  max-width: 540px;
+  line-height: 1.4;
+}
+.hero-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.hero-meta {
+  font-size: 0.92rem; color: var(--muted);
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+}
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.hero-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ochre); }
+
+/* Decorative tile in hero */
+.hero-tile {
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 520px;
+  height: 520px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+@media (max-width: 800px) { .hero-tile { width: 320px; height: 320px; right: -90px; bottom: -90px; } }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  animation: floatY 2.4s ease-in-out infinite;
+}
+.scroll-indicator .line { width: 1px; height: 28px; background: var(--clay); opacity: 0.4; }
+@keyframes floatY { 0%,100%{ transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
+
+/* ================== PROBLEMA ================== */
+.problema { background: var(--cream); }
+.problema-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.problem-card {
+  background: var(--linen);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 2.4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.problem-card .stat {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: var(--terracotta);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.problem-card .stat .unit { font-size: 0.5em; color: var(--muted); font-style: italic; margin-left: 0.3rem; }
+.problem-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; color: var(--clay-deep); font-family: 'Inter', sans-serif; font-weight: 600; }
+.problem-card p { color: var(--muted); font-size: 0.95rem; }
+.problem-card::after {
+  content: ''; position: absolute;
+  top: -40px; right: -40px;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, var(--ochre) 0%, transparent 60%);
+  opacity: 0.18;
+  border-radius: 50%;
+}
+
+/* ================== SOLUCIÓN ================== */
+.solucion {
+  background: var(--clay-deep);
+  color: var(--linen);
+  position: relative;
+  overflow: hidden;
+}
+.solucion::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><g fill='none' stroke='%23f5ede0' stroke-width='0.7' opacity='0.14'><path d='M40 5 L75 40 L40 75 L5 40 Z'/><circle cx='40' cy='40' r='12'/></g></svg>");
+  opacity: 0.6;
+  pointer-events: none;
+}
+.solucion .container { position: relative; z-index: 1; }
+.solucion h2, .solucion .eyebrow { color: var(--linen); }
+.solucion .eyebrow { color: var(--ochre); }
+.solucion-intro { max-width: 720px; }
+.solucion-intro p { font-size: 1.15rem; color: rgba(245, 237, 224, 0.85); margin-top: 0.6rem; }
+
+.solucion-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+  align-items: center;
+}
+@media (max-width: 900px) { .solucion-grid { grid-template-columns: 1fr; } }
+
+.features-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.feature-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  background: rgba(245, 237, 224, 0.05);
+  border: 1px solid rgba(245, 237, 224, 0.1);
+  border-radius: var(--radius-md);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.feature-item:hover { background: rgba(245, 237, 224, 0.08); border-color: rgba(212, 155, 63, 0.4); }
+.feature-icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--ochre);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clay-deep);
+}
+.feature-text h4 { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--linen); margin-bottom: 0.25rem; }
+.feature-text p { color: rgba(245, 237, 224, 0.7); font-size: 0.95rem; line-height: 1.5; }
+
+.price-card {
+  background: linear-gradient(155deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+  border-radius: var(--radius-lg);
+  padding: 2.8rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.price-card::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, var(--ochre) 0%, transparent 70%);
+  opacity: 0.4;
+  border-radius: 50%;
+}
+.price-card .label { text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.78rem; color: rgba(255,255,255,0.85); font-weight: 600; }
+.price-card .price {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.5rem, 8vw, 4.8rem);
+  color: var(--cream);
+  line-height: 1;
+  margin: 0.6rem 0 0.3rem;
+}
+.price-card .price small { font-size: 0.32em; vertical-align: super; opacity: 0.8; margin-right: 0.25em; font-style: italic; }
+.price-card .price .per { font-family: 'Inter', sans-serif; font-size: 1rem; opacity: 0.85; font-weight: 400; margin-left: 0.5rem; }
+.price-card .desc { color: rgba(255,255,255,0.92); font-size: 1rem; margin-top: 0.6rem; line-height: 1.5; position: relative; z-index: 1; }
+.price-card ul { list-style: none; margin-top: 1.6rem; padding: 1.4rem 0 0; border-top: 1px solid rgba(255,255,255,0.2); position: relative; z-index: 1; }
+.price-card ul li { color: var(--cream); padding: 0.4rem 0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.6rem; }
+.price-card ul li::before { content: '✓'; color: var(--ochre); font-weight: bold; }
+
+/* ================== PARA QUIÉN ================== */
+.personas { background: var(--linen); }
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+.persona-card {
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.persona-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+.persona-avatar {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.persona-avatar svg { width: 100%; height: 100%; }
+.persona-card:nth-child(1) .persona-avatar { background: linear-gradient(135deg, #d97a52 0%, #c2552d 100%); }
+.persona-card:nth-child(2) .persona-avatar { background: linear-gradient(135deg, #8a9a7b 0%, #6b7d5e 100%); }
+.persona-card:nth-child(3) .persona-avatar { background: linear-gradient(135deg, #d49b3f 0%, #b8822e 100%); }
+.persona-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+.persona-name { font-family: 'DM Serif Display', serif; font-size: 1.45rem; color: var(--clay-deep); margin-bottom: 0.2rem; }
+.persona-role { font-size: 0.88rem; color: var(--terracotta); font-weight: 500; margin-bottom: 1rem; }
+.persona-quote {
+  font-style: italic;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  border-left: 3px solid var(--ochre);
+  padding-left: 1rem;
+  margin-top: auto;
+}
+
+/* ================== DIFERENCIADORES ================== */
+.diferenciadores { background: var(--cream); }
+.compare-wrap { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--line); }
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--cream);
+  min-width: 640px;
+}
+.compare th, .compare td {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.98rem;
+  vertical-align: top;
+}
+.compare thead th {
+  background: var(--linen);
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--clay-deep);
+  border-bottom: 2px solid var(--clay);
+}
+.compare thead th:first-child { background: var(--linen-warm); font-family: 'Inter', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); font-weight: 600; }
+.compare thead th.raices-col { background: var(--terracotta); color: var(--cream); }
+.compare tbody tr:last-child td { border-bottom: none; }
+.compare tbody td:first-child {
+  font-weight: 600;
+  color: var(--clay-deep);
+  background: var(--linen-warm);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: 22%;
+}
+.compare td.raices-col { background: rgba(194, 85, 45, 0.06); color: var(--clay-deep); font-weight: 500; }
+.compare td.market-col { color: var(--muted); }
+.compare tbody tr:hover td { background: rgba(212, 155, 63, 0.05); }
+.compare tbody tr:hover td.raices-col { background: rgba(194, 85, 45, 0.1); }
+.compare tbody tr:hover td:first-child { background: var(--linen); }
+
+/* ================== EDIFICIO ================== */
+.edificio {
+  background: var(--linen);
+  position: relative;
+  overflow: hidden;
+}
+.edificio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 900px) { .edificio-grid { grid-template-columns: 1fr; } }
+.edificio-info .badge {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: var(--sage);
+  color: var(--cream);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+.edificio-info h2 { margin-bottom: 1rem; }
+.edificio-info > p { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; max-width: 480px; }
+.edificio-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.fact {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.3rem 1.4rem;
+}
+.fact .num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: var(--terracotta);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.fact .desc { font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
+
+.map-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line);
+}
+.map-visual {
+  height: 320px;
+  position: relative;
+  background:
+    linear-gradient(135deg, #e8d9bd 0%, #d4bf9a 100%);
+  overflow: hidden;
+}
+.map-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(92, 46, 31, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 46, 31, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.map-visual::after {
+  content: '';
+  position: absolute;
+  width: 80%; height: 6px;
+  background: var(--sage);
+  top: 60%; left: -10%;
+  transform: rotate(-12deg);
+  opacity: 0.4;
+  border-radius: 3px;
+}
+.map-pin {
+  position: absolute;
+  top: 45%; left: 52%;
+  transform: translate(-50%, -100%);
+  z-index: 2;
+}
+.map-pin .pin-circle {
+  width: 36px; height: 36px;
+  background: var(--terracotta);
+  border-radius: 50%;
+  border: 4px solid var(--cream);
+  box-shadow: 0 4px 12px rgba(92, 46, 31, 0.3);
+  position: relative;
+}
+.map-pin .pin-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  opacity: 0.4;
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.map-pin .pin-label {
+  position: absolute;
+  top: -38px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--clay-deep);
+  color: var(--cream);
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.map-pin .pin-label::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 50%; transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--clay-deep);
+}
+.map-caption {
+  padding: 1.3rem 1.6rem;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  flex-wrap: wrap;
+}
+.map-caption .place { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--clay-deep); }
+.map-caption .city { font-size: 0.85rem; color: var(--muted); }
+.map-caption .status {
+  font-size: 0.75rem; font-weight: 600;
+  background: var(--sage); color: var(--cream);
+  padding: 0.3rem 0.7rem; border-radius: 999px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+/* ================== CONTACTO ================== */
+.contacto {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.contacto::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212, 155, 63, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contacto::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(138, 154, 123, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.contacto-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .contacto-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+.contacto-info h2 { margin-bottom: 1rem; }
+.contacto-info > p { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; }
+.contacto-points { display: flex; flex-direction: column; gap: 1.2rem; }
+.contacto-point { display: flex; gap: 1rem; align-items: flex-start; }
+.contacto-point .num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--terracotta);
+  color: var(--cream);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem;
+}
+.contacto-point h4 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; color: var(--clay-deep); margin-bottom: 0.2rem; }
+.contacto-point p { font-size: 0.92rem; color: var(--muted); }
+
+.form-wrap {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 600px) { .form-wrap { padding: 1.8rem; } }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--clay-deep);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 3px rgba(194, 85, 45, 0.12);
+}
+.form-group select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4 L6 8 L10 4' stroke='%235c2e1f' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.form-submit { width: 100%; justify-content: center; margin-top: 0.5rem; padding: 1.1rem; }
+.form-disclaimer { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.form-success.show { display: block; animation: fadeIn 0.5s ease; }
+.form-success .check {
+  width: 64px; height: 64px;
+  margin: 0 auto 1.2rem;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cream);
+}
+.form-success h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--clay-deep); margin-bottom: 0.6rem; }
+.form-success p { color: var(--muted); }
+
+/* ================== FOOTER ================== */
+.footer {
+  background: var(--clay-deep);
+  color: rgba(245, 237, 224, 0.85);
+  padding: 4rem 0 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><g fill='none' stroke='%23f5ede0' stroke-width='0.5' opacity='0.1'><path d='M30 5 L55 30 L30 55 L5 30 Z'/></g></svg>");
+  opacity: 0.5;
+  pointer-events: none;
+}
+.footer .container { position: relative; z-index: 1; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand .logo { color: var(--linen); margin-bottom: 1rem; }
+.footer-brand .logo .by { color: rgba(245, 237, 224, 0.6); }
+.footer-brand .tagline {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--ochre);
+  margin-bottom: 0.6rem;
+}
+.footer-brand p { color: rgba(245, 237, 224, 0.65); font-size: 0.95rem; max-width: 320px; line-height: 1.55; }
+.footer-col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ochre);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a { color: rgba(245, 237, 224, 0.75); font-size: 0.95rem; transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--ochre); }
+.footer-bottom {
+  border-top: 1px solid rgba(245, 237, 224, 0.12);
+  padding-top: 1.8rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+  font-size: 0.85rem;
+  color: rgba(245, 237, 224, 0.55);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 800px) {
+  .problema-grid, .personas-grid { grid-template-columns: 1fr; }
+  .edificio-facts { grid-template-columns: repeat(2, 1fr); }
+  .nav-cta { display: none; }
+  .hero { padding-top: 100px; }
+}
+
+/* ================== SCROLL ANIMATIONS ================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.delay-1 { transition-delay: 0.08s; }
+.reveal.delay-2 { transition-delay: 0.16s; }
+.reveal.delay-3 { transition-delay: 0.24s; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+::selection { background: var(--terracotta); color: var(--cream); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">
+      RAÍCES <span class="by">by Sadala</span>
+    </a>
+    <a href="#contacto" class="nav-cta">Lista de espera</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-pattern"></div>
+  <svg class="hero-tile" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <pattern id="azulejo" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="none"/>
+        <g fill="none" stroke="#5c2e1f" stroke-width="1.5">
+          <path d="M50 5 L95 50 L50 95 L5 50 Z"/>
+          <path d="M50 20 L80 50 L50 80 L20 50 Z"/>
+          <circle cx="50" cy="50" r="14"/>
+          <path d="M50 36 L64 50 L50 64 L36 50 Z" fill="#c2552d" fill-opacity="0.6"/>
+        </g>
+        <g fill="#d49b3f" fill-opacity="0.5">
+          <circle cx="0" cy="0" r="4"/><circle cx="100" cy="0" r="4"/>
+          <circle cx="0" cy="100" r="4"/><circle cx="100" cy="100" r="4"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="400" height="400" fill="url(#azulejo)"/>
+  </svg>
+
+  <div class="container hero-content">
+    <span class="hero-eyebrow">Coliving en Málaga · Próxima apertura</span>
+    <h1>Para los <span class="accent">de aquí.</span></h1>
+    <p class="hero-sub">Tu primer hogar en Málaga. Habitación privada, zonas comunes de calidad y comunidad. Todo incluido.</p>
+    <div class="hero-cta-row">
+      <a href="#contacto" class="btn">
+        Quiero saber más
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"/></svg>
+      </a>
+      <a href="#solucion" class="btn btn-ghost">Cómo funciona</a>
+    </div>
+    <div class="hero-meta" style="margin-top: 2.5rem;">
+      <span><span class="dot"></span>Desde 600€/mes todo incluido</span>
+      <span><span class="dot"></span>La Trinidad, Málaga</span>
+      <span><span class="dot"></span>Apertura 2026</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Sigue bajando</span>
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- ===== PROBLEMA ===== -->
+<section class="problema" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">El problema</span>
+      <h2>Málaga está perdiendo a su gente.</h2>
+      <p>El mercado del alquiler ha cambiado. Quienes nacieron y se formaron aquí no pueden permitirse vivir donde crecieron.</p>
+    </div>
+
+    <div class="problema-grid">
+      <div class="problem-card reveal delay-1">
+        <div class="stat">12.000<span class="unit">pisos</span></div>
+        <h3>Pisos turísticos en la ciudad</h3>
+        <p>El centro y los barrios consolidados se han transformado en alojamientos para turistas, no para vecinos.</p>
+      </div>
+      <div class="problem-card reveal delay-2">
+        <div class="stat">€900–1.100<span class="unit">/mes</span></div>
+        <h3>Un piso en el centro</h3>
+        <p>Alquilar un piso de una habitación en una zona céntrica supera ya el sueldo de muchos jóvenes profesionales.</p>
+      </div>
+      <div class="problem-card reveal delay-3">
+        <div class="stat">→</div>
+        <h3>Los malagueños se van de su ciudad</h3>
+        <p>Enfermeras, profesores e ingenieros se mudan a la periferia o, peor, a otras provincias. Pierden raíces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUCIÓN ===== -->
+<section class="solucion" id="solucion">
+  <div class="container">
+    <div class="section-head solucion-intro reveal">
+      <span class="eyebrow">La solución</span>
+      <h2>Un hogar adulto, asequible y con comunidad.</h2>
+      <p>RAÍCES no es una residencia de estudiantes ni un hostal. Es un espacio pensado para profesionales jóvenes que quieren vivir bien, sin renunciar a ahorrar y sin firmar un contrato que les ate.</p>
+    </div>
+
+    <div class="solucion-grid">
+      <div class="features-list">
+        <div class="feature-item reveal">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 L12 3 L21 12"/><path d="M5 10 L5 21 L19 21 L19 10"/><path d="M9 21 L9 14 L15 14 L15 21"/></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Habitación privada con baño</h4>
+            <p>Tu espacio. Cama de matrimonio, escritorio, almacenamiento, baño en suite. Sin compartir con desconocidos.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-1">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4 L20 4 L20 20 L4 20 Z"/><path d="M4 12 L20 12 M12 4 L12 20"/></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Zonas comunes de calidad</h4>
+            <p>Cocina equipada, salón de lectura, sala de coworking, terraza con vistas. Diseñadas para usarlas, no para la foto.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-2">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21 C4 16 7 14 12 14 C17 14 20 16 20 21"/></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Gestión profesional</h4>
+            <p>Limpieza semanal de zonas comunes, mantenimiento 24h, app de incidencias. Tú vives, nosotros nos ocupamos del resto.</p>
+          </div>
+        </div>
+        <div class="feature-item reveal delay-3">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L15 8 L22 9 L17 14 L18 21 L12 18 L6 21 L7 14 L2 9 L9 8 Z"/></svg>
+          </div>
+          <div class="feature-text">
+            <h4>Todo incluido</h4>
+            <p>Luz, agua, gas, internet de fibra, limpieza y mantenimiento. Una sola cuota, sin sorpresas a fin de mes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-card reveal delay-2">
+        <span class="label">Cuota mensual</span>
+        <div class="price"><small>desde</small>600€<span class="per">/ mes</span></div>
+        <p class="desc">Habitación privada con baño, todos los suministros, conexión de fibra y acceso completo a zonas comunes.</p>
+        <ul>
+          <li>Sin fianza desorbitada</li>
+          <li>Contratos desde 6 meses</li>
+          <li>Sin avalistas ni nóminas imposibles</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARA QUIÉN ===== -->
+<section class="personas" id="para-quien">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Para quién</span>
+      <h2>Pensado para quienes hacen Málaga.</h2>
+      <p>Profesionales jóvenes con un trabajo estable, que necesitan vivir cerca y bien sin gastar la mitad de su sueldo en alquiler.</p>
+    </div>
+
+    <div class="personas-grid">
+      <article class="persona-card reveal">
+        <div class="persona-avatar">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#f5ede0" stroke-width="1.5" opacity="0.5">
+              <circle cx="40" cy="40" r="20"/><circle cx="160" cy="140" r="25"/>
+              <path d="M0 90 L200 90 M100 0 L100 180"/>
+            </g>
+            <g transform="translate(100,90)">
+              <circle r="32" fill="#f5ede0" opacity="0.95"/>
+              <path d="M-12 -4 L-12 8 M12 -4 L12 8 M-8 -8 L-4 -8 M4 -8 L8 -8" stroke="#5c2e1f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M-10 14 Q0 22 10 14" stroke="#5c2e1f" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M-32 -8 Q-32 -32 0 -32 Q32 -32 32 -8" fill="#3d1f15"/>
+              <rect x="-22" y="28" width="44" height="14" fill="#f5ede0" rx="2"/>
+              <path d="M-2 30 L-2 38 M2 30 L2 38 M-6 34 L6 34" stroke="#c2552d" stroke-width="1.2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Lucía, 28</h3>
+          <span class="persona-role">Enfermera · Hospital Regional</span>
+          <p class="persona-quote">"Hago turnos de noche y vuelvo a un piso compartido con tres desconocidos. Quiero tranquilidad, mi propio baño y poder ahorrar para algún día comprarme algo."</p>
+        </div>
+      </article>
+
+      <article class="persona-card reveal delay-1">
+        <div class="persona-avatar">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#f5ede0" stroke-width="1.5" opacity="0.5">
+              <path d="M30 30 L170 30 L170 150 L30 150 Z"/>
+              <path d="M50 50 L150 50 M50 80 L150 80 M50 110 L150 110"/>
+            </g>
+            <g transform="translate(100,90)">
+              <circle r="32" fill="#f5ede0" opacity="0.95"/>
+              <circle cx="-10" cy="-2" r="2.5" fill="#5c2e1f"/>
+              <circle cx="10" cy="-2" r="2.5" fill="#5c2e1f"/>
+              <path d="M-8 14 L8 14" stroke="#5c2e1f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M-30 -10 Q-30 -30 0 -30 Q30 -30 30 -10 L30 -4 L24 -8 L-24 -8 L-30 -4 Z" fill="#3d1f15"/>
+              <rect x="-20" y="28" width="40" height="14" fill="#8a9a7b" rx="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Marcos, 31</h3>
+          <span class="persona-role">Ingeniero · Parque Tecnológico</span>
+          <p class="persona-quote">"Trabajo en el PTA y vivir cerca me cambiaría la vida. Pero pagar 1.000€ por un estudio para acabar comiendo solo no tiene sentido. Quiero un sitio adulto, no una residencia de Erasmus."</p>
+        </div>
+      </article>
+
+      <article class="persona-card reveal delay-2">
+        <div class="persona-avatar">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="#f5ede0" stroke-width="1.5" opacity="0.5">
+              <circle cx="100" cy="90" r="70"/>
+              <circle cx="100" cy="90" r="45"/>
+              <circle cx="100" cy="90" r="20"/>
+            </g>
+            <g transform="translate(100,90)">
+              <circle r="32" fill="#f5ede0" opacity="0.95"/>
+              <circle cx="-10" cy="-2" r="2.5" fill="#5c2e1f"/>
+              <circle cx="10" cy="-2" r="2.5" fill="#5c2e1f"/>
+              <path d="M-8 14 Q0 18 8 14" stroke="#5c2e1f" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M-32 -2 Q-32 -34 0 -34 Q32 -34 32 -2 L32 24 L20 18 L-20 18 L-32 24 Z" fill="#5c2e1f"/>
+              <rect x="-22" y="28" width="44" height="14" fill="#d49b3f" rx="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="persona-body">
+          <h3 class="persona-name">Carmen, 26</h3>
+          <span class="persona-role">Profesora · Instituto público</span>
+          <p class="persona-quote">"Soy de Málaga, mi familia es de aquí. No quiero irme a Antequera o a Granada para poder pagar el alquiler. Solo quiero un piso digno, sin peleas con caseros, sin vivir contando los días."</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFERENCIADORES ===== -->
+<section class="diferenciadores" id="diferenciadores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Diferenciadores</span>
+      <h2>No somos un piso compartido más.</h2>
+      <p>Una alternativa real al mercado actual. Comparemos.</p>
+    </div>
+
+    <div class="compare-wrap reveal delay-1">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Mercado actual</th>
+            <th class="raices-col">RAÍCES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Precio</td>
+            <td class="market-col">900–1.100€ por estudio<br/><span style="font-size:0.85em;">+ suministros aparte</span></td>
+            <td class="raices-col">Desde 600€/mes<br/><span style="font-size:0.85em;">todo incluido</span></td>
+          </tr>
+          <tr>
+            <td>Contrato</td>
+            <td class="market-col">11 meses con avalista, fianza de 2–3 mensualidades</td>
+            <td class="raices-col">Desde 6 meses, sin avalistas, fianza única razonable</td>
+          </tr>
+          <tr>
+            <td>Para quién</td>
+            <td class="market-col">Indiferente: turistas, estudiantes, expats, locales</td>
+            <td class="raices-col">Profesionales jóvenes locales con trabajo estable</td>
+          </tr>
+          <tr>
+            <td>Gestión</td>
+            <td class="market-col">Casero particular, respuesta lenta, mantenimiento ad-hoc</td>
+            <td class="raices-col">Equipo profesional, app de incidencias, mantenimiento 24h</td>
+          </tr>
+          <tr>
+            <td>Misión</td>
+            <td class="market-col">Maximizar rentabilidad por noche</td>
+            <td class="raices-col">Que los malagueños puedan seguir viviendo en Málaga</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDIFICIO ===== -->
+<section class="edificio" id="edificio">
+  <div class="container">
+    <div class="edificio-grid">
+      <div class="edificio-info reveal">
+        <span class="badge">Próxima apertura</span>
+        <h2>Primer edificio en La Trinidad.</h2>
+        <p>Un barrio histórico, auténtico, bien conectado. A diez minutos andando del centro y con la Málaga real al otro lado de la puerta.</p>
+
+        <div class="edificio-facts">
+          <div class="fact"><span class="num">10–12</span><span class="desc">Habitaciones privadas con baño</span></div>
+          <div class="fact"><span class="num">4</span><span class="desc">Plantas con ascensor</span></div>
+          <div class="fact"><span class="num">3</span><span class="desc">Zonas comunes amplias</span></div>
+          <div class="fact"><span class="num">1</span><span class="desc">Terraza con vistas</span></div>
+        </div>
+      </div>
+
+      <div class="map-card reveal delay-1">
+        <div class="map-visual">
+          <div class="map-pin">
+            <span class="pin-label">La Trinidad</span>
+            <div class="pin-pulse"></div>
+            <div class="pin-circle"></div>
+          </div>
+        </div>
+        <div class="map-caption">
+          <div>
+            <div class="place">La Trinidad</div>
+            <div class="city">Málaga, España</div>
+          </div>
+          <span class="status">Próximamente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contacto" id="contacto">
+  <div class="container contacto-inner">
+    <div class="contacto-info reveal">
+      <span class="eyebrow">Lista de espera</span>
+      <h2>Sé de los primeros en entrar.</h2>
+      <p>Quedan pocas plazas en la primera promoción. Apúntate sin compromiso y te avisaremos antes que a nadie cuando se abra el proceso de selección.</p>
+
+      <div class="contacto-points">
+        <div class="contacto-point">
+          <div class="num">1</div>
+          <div>
+            <h4>Te apuntas a la lista</h4>
+            <p>Nombre, email y un par de datos. Treinta segundos.</p>
+          </div>
+        </div>
+        <div class="contacto-point">
+          <div class="num">2</div>
+          <div>
+            <h4>Te avisamos primero</h4>
+            <p>Cuando abramos selección, los de la lista entran antes y con condiciones preferentes.</p>
+          </div>
+        </div>
+        <div class="contacto-point">
+          <div class="num">3</div>
+          <div>
+            <h4>Visitas y reservas</h4>
+            <p>Conoces el edificio, eliges habitación y firmas. Sin sorpresas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-wrap reveal delay-1">
+      <form id="waitlist-form" novalidate>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Cómo te llamas" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="profesion">Profesión</label>
+            <input type="text" id="profesion" name="profesion" required placeholder="A qué te dedicas" />
+          </div>
+          <div class="form-group">
+            <label for="cuando">¿Cuándo lo necesitas?</label>
+            <select id="cuando" name="cuando" required>
+              <option value="">Elige una opción</option>
+              <option value="ya">Ya, lo antes posible</option>
+              <option value="3m">En los próximos 3 meses</option>
+              <option value="6m">En los próximos 6 meses</option>
+              <option value="explorando">Solo estoy explorando</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn form-submit">
+          Únete a la lista de espera
+          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"/></svg>
+        </button>
+        <p class="form-disclaimer">Sin spam. Solo te escribimos cuando haya novedades reales.</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="check">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+        </div>
+        <h3>¡Estás dentro!</h3>
+        <p>Te hemos añadido a la lista. Te avisaremos por email cuando abramos selección.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">RAÍCES <span class="by">by Sadala</span></div>
+        <div class="tagline">Para los de aquí.</div>
+        <p>Coliving asequible para jóvenes profesionales malagueños. Una iniciativa de SADALA, promotora de Málaga.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#solucion">Cómo funciona</a></li>
+          <li><a href="#para-quien">Para quién</a></li>
+          <li><a href="#edificio">El edificio</a></li>
+          <li><a href="#contacto">Lista de espera</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SADALA</h4>
+        <ul>
+          <li><a href="https://sadala.es" target="_blank" rel="noopener">sadala.es</a></li>
+          <li><a href="mailto:hola@sadala.es">hola@sadala.es</a></li>
+          <li><span style="color:rgba(245,237,224,0.6);">Málaga, España</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SADALA. Todos los derechos reservados.</span>
+      <span>Hecho en Málaga, con raíces.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 24) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    reveals.forEach((el) => io.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('visible'));
+  }
+
+  // Smooth scroll for in-page anchors (graceful enhancement)
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+
+  // Form
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      const email = form.email.value.trim();
+      const profesion = form.profesion.value.trim();
+      const cuando = form.cuando.value;
+
+      if (!nombre || !email || !profesion || !cuando) {
+        form.querySelectorAll('input, select').forEach((el) => {
+          if (!el.value.trim()) {
+            el.style.borderColor = '#c2552d';
+            el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+          }
+        });
+        return;
+      }
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!emailOk) {
+        form.email.style.borderColor = '#c2552d';
+        form.email.addEventListener('input', () => { form.email.style.borderColor = ''; }, { once: true });
+        return;
+      }
+
+      form.style.display = 'none';
+      success.classList.add('show');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
